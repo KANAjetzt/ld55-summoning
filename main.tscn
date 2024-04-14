@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://b0qt8n6gbxlat"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_nu5bv"]
+[ext_resource type="PackedScene" uid="uid://bnjd3xnekunev" path="res://Cats/cat_miner.tscn" id="2_ma2mg"]
+[ext_resource type="PackedScene" uid="uid://b6lwml3cddh7x" path="res://Buildings/storage.tscn" id="2_pq0lw"]
+[ext_resource type="PackedScene" uid="uid://b4a73ga7o86ma" path="res://Buildings/mine.tscn" id="3_uhm5x"]
+
+[sub_resource type="Gradient" id="Gradient_suikg"]
+offsets = PackedFloat32Array(0, 0.996169)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cdnfs"]
+gradient = SubResource("Gradient_suikg")
+
+[sub_resource type="Environment" id="Environment_ebfxl"]
+background_mode = 1
+
+[node name="Main" type="Node"]
+script = ExtResource("1_nu5bv")
+
+[node name="Cats" type="Node" parent="."]
+
+[node name="Cat" parent="Cats" instance=ExtResource("2_ma2mg")]
+position = Vector2(293, 323)
+
+[node name="Cat2" parent="Cats" instance=ExtResource("2_ma2mg")]
+position = Vector2(359, 376)
+
+[node name="Cat3" parent="Cats" instance=ExtResource("2_ma2mg")]
+position = Vector2(258, 400)
+
+[node name="Storage" parent="." instance=ExtResource("2_pq0lw")]
+position = Vector2(585, 342)
+
+[node name="Mine" parent="." instance=ExtResource("3_uhm5x")]
+position = Vector2(221, 154)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer"]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ParallaxBackground"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_cdnfs")
+metadata/_edit_lock_ = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ebfxl")
