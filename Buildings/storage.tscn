@@ -1,7 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://b6lwml3cddh7x"]
+[gd_scene load_steps=8 format=3 uid="uid://b6lwml3cddh7x"]
 
+[ext_resource type="Script" path="res://Buildings/storage.gd" id="1_ggwxb"]
 [ext_resource type="Texture2D" uid="uid://cwggwumpvkcvk" path="res://Buildings/storage_container.png" id="1_x56mw"]
 [ext_resource type="Texture2D" uid="uid://dnl5e5ggpig16" path="res://Buildings/storage_lid.png" id="2_h7avv"]
+[ext_resource type="PackedScene" uid="uid://cqf2t0k4fmlo2" path="res://Buildings/info_bar.tscn" id="2_waxv6"]
+
+[sub_resource type="Animation" id="Animation_fe7vj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Lid:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -181)]
+}
 
 [sub_resource type="Animation" id="Animation_sm5ob"]
 resource_name = "open"
@@ -19,21 +36,6 @@ tracks/0/keys = {
 "values": [Vector2(0, -181), Vector2(-207, -181)]
 }
 
-[sub_resource type="Animation" id="Animation_fe7vj"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Lid:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -181)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1a5ss"]
 _data = {
 "RESET": SubResource("Animation_fe7vj"),
@@ -42,6 +44,16 @@ _data = {
 
 [node name="Storage" type="Node2D"]
 scale = Vector2(0.35, 0.35)
+script = ExtResource("1_ggwxb")
+health_max = 10
+
+[node name="InfoBar" parent="." instance=ExtResource("2_waxv6")]
+unique_name_in_owner = true
+offset_left = -345.714
+offset_top = -542.857
+offset_right = -172.714
+offset_bottom = -471.857
+scale = Vector2(4, 4)
 
 [node name="Container" type="Sprite2D" parent="."]
 texture = ExtResource("1_x56mw")

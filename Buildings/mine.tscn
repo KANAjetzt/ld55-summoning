@@ -1,9 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://b4a73ga7o86ma"]
+[gd_scene load_steps=4 format=3 uid="uid://b4a73ga7o86ma"]
 
+[ext_resource type="Script" path="res://Buildings/mine.gd" id="1_5omvh"]
 [ext_resource type="Texture2D" uid="uid://ebtvmsxs333o" path="res://Buildings/mine.png" id="1_nqqe4"]
+[ext_resource type="PackedScene" uid="uid://cqf2t0k4fmlo2" path="res://Buildings/info_bar.tscn" id="3_oo2kx"]
 
 [node name="Mine" type="Node2D"]
 scale = Vector2(0.35, 0.35)
+script = ExtResource("1_5omvh")
+health_max = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_nqqe4")
+
+[node name="InfoBar" parent="." instance=ExtResource("3_oo2kx")]
+unique_name_in_owner = true
+offset_left = -317.143
+offset_top = -468.571
+offset_right = -144.143
+offset_bottom = -397.571
+scale = Vector2(4, 4)
