@@ -1,11 +1,19 @@
 extends Node
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+signal dry_food_count_changed(dry_food_count: int)
+signal  aliens_attacking_count_changed(aliens_attacking_count: int)
+
+@export var dry_food_count := 0
+
+var aliens_attacking_count := 0
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func set_dry_fodd_count(amount: int) -> void:
+	dry_food_count = dry_food_count + amount
+	dry_food_count_changed.emit(dry_food_count)
+
+
+func set_aliens_attacking_count(amount: int) -> void:
+	aliens_attacking_count = aliens_attacking_count + amount
+	aliens_attacking_count_changed.emit(aliens_attacking_count)

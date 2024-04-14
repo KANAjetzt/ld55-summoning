@@ -1,10 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://b0qt8n6gbxlat"]
+[gd_scene load_steps=11 format=3 uid="uid://b0qt8n6gbxlat"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_nu5bv"]
 [ext_resource type="PackedScene" uid="uid://bnjd3xnekunev" path="res://Cats/cat_miner.tscn" id="2_ma2mg"]
 [ext_resource type="PackedScene" uid="uid://b6lwml3cddh7x" path="res://Buildings/storage.tscn" id="2_pq0lw"]
 [ext_resource type="PackedScene" uid="uid://b4a73ga7o86ma" path="res://Buildings/mine.tscn" id="3_uhm5x"]
 [ext_resource type="PackedScene" uid="uid://dpjedk5o7w8rk" path="res://UI/shop.tscn" id="5_qrleq"]
+[ext_resource type="PackedScene" uid="uid://dudgniskyxns2" path="res://UI/dry_food_counter.tscn" id="5_tmh1l"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gxcq8"]
 
 [sub_resource type="Gradient" id="Gradient_suikg"]
 offsets = PackedFloat32Array(0, 0.996169)
@@ -37,6 +40,23 @@ position = Vector2(585, 342)
 position = Vector2(221, 154)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -97.0
+offset_bottom = 40.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_gxcq8")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 25
+
+[node name="HBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer" instance=ExtResource("5_tmh1l")]
+layout_mode = 2
 
 [node name="Shop" parent="CanvasLayer" instance=ExtResource("5_qrleq")]
 size_flags_vertical = 8

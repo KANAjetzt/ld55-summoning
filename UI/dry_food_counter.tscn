@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://dudgniskyxns2"]
+
+[ext_resource type="Script" path="res://UI/dry_food_counter.gd" id="1_loe34"]
+[ext_resource type="Texture2D" uid="uid://v1on87kwm0jt" path="res://UI/dry_food_icon.png" id="1_mm1vj"]
+
+[node name="HBoxContainer" type="HBoxContainer"]
+auto_translate_mode = 1
+script = ExtResource("1_loe34")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+auto_translate_mode = 1
+layout_mode = 2
+texture = ExtResource("1_mm1vj")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+auto_translate_mode = 1
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "%s"
+horizontal_alignment = 1
+vertical_alignment = 1
