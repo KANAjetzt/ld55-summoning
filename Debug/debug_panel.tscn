@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Debug/debug_panel.gd" id="1_fqklp"]
 
-[node name="PanelContainer" type="PanelContainer"]
+[node name="DebugPanel" type="PanelContainer"]
 auto_translate_mode = 1
 offset_left = -80.0
 offset_top = -205.0

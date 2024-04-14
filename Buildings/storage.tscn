@@ -1,9 +1,16 @@
-[gd_scene load_steps=10 format=3 uid="uid://b6lwml3cddh7x"]
+[gd_scene load_steps=11 format=3 uid="uid://b6lwml3cddh7x"]
 
 [ext_resource type="Script" path="res://Buildings/storage.gd" id="1_ggwxb"]
 [ext_resource type="Texture2D" uid="uid://cwggwumpvkcvk" path="res://Buildings/storage_container.png" id="1_x56mw"]
 [ext_resource type="Texture2D" uid="uid://dnl5e5ggpig16" path="res://Buildings/storage_lid.png" id="2_h7avv"]
 [ext_resource type="PackedScene" uid="uid://cqf2t0k4fmlo2" path="res://Buildings/info_bar.tscn" id="2_waxv6"]
+[ext_resource type="PackedScene" uid="uid://ck7pp5vhb1ofp" path="res://Debug/debug_panel.tscn" id="5_p5tba"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f1w4a"]
+size = Vector2(485.714, 382.857)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gs6dv"]
+size = Vector2(1248.57, 1040)
 
 [sub_resource type="Animation" id="Animation_fe7vj"]
 length = 0.001
@@ -42,12 +49,6 @@ _data = {
 "open": SubResource("Animation_sm5ob")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_f1w4a"]
-size = Vector2(485.714, 382.857)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gs6dv"]
-size = Vector2(1248.57, 1040)
-
 [node name="Storage" type="StaticBody2D"]
 scale = Vector2(0.35, 0.35)
 script = ExtResource("1_ggwxb")
@@ -65,13 +66,9 @@ scale = Vector2(4, 4)
 texture = ExtResource("1_x56mw")
 
 [node name="Lid" type="Sprite2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(0, -181)
 texture = ExtResource("2_h7avv")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_1a5ss")
-}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2.38419e-06, -11.4286)
@@ -82,8 +79,20 @@ collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Awarnesse"]
 position = Vector2(1.42854, -14.2857)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_gs6dv")
+
+[node name="DebugPanel" parent="." instance=ExtResource("5_p5tba")]
+unique_name_in_owner = true
+offset_left = 277.143
+offset_top = -191.429
+offset_right = 317.143
+offset_bottom = -151.429
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_1a5ss")
+}
 
 [connection signal="body_entered" from="Awarnesse" to="." method="_on_awarnesse_body_entered"]
 [connection signal="body_exited" from="Awarnesse" to="." method="_on_awarnesse_body_exited"]
