@@ -1,5 +1,5 @@
 class_name Building
-extends Node
+extends Node2D
 
 
 signal damage_taken(new_health: int)

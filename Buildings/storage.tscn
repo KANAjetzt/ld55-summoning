@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b6lwml3cddh7x"]
+[gd_scene load_steps=10 format=3 uid="uid://b6lwml3cddh7x"]
 
 [ext_resource type="Script" path="res://Buildings/storage.gd" id="1_ggwxb"]
 [ext_resource type="Texture2D" uid="uid://cwggwumpvkcvk" path="res://Buildings/storage_container.png" id="1_x56mw"]
@@ -42,7 +42,13 @@ _data = {
 "open": SubResource("Animation_sm5ob")
 }
 
-[node name="Storage" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f1w4a"]
+size = Vector2(485.714, 382.857)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gs6dv"]
+size = Vector2(1248.57, 1040)
+
+[node name="Storage" type="StaticBody2D"]
 scale = Vector2(0.35, 0.35)
 script = ExtResource("1_ggwxb")
 health_max = 10
@@ -66,3 +72,18 @@ texture = ExtResource("2_h7avv")
 libraries = {
 "": SubResource("AnimationLibrary_1a5ss")
 }
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.38419e-06, -11.4286)
+shape = SubResource("RectangleShape2D_f1w4a")
+
+[node name="Awarnesse" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Awarnesse"]
+position = Vector2(1.42854, -14.2857)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_gs6dv")
+
+[connection signal="body_entered" from="Awarnesse" to="." method="_on_awarnesse_body_entered"]
+[connection signal="body_exited" from="Awarnesse" to="." method="_on_awarnesse_body_exited"]

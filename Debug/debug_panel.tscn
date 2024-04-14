@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://ck7pp5vhb1ofp"]
+
+[ext_resource type="Script" path="res://Debug/debug_panel.gd" id="1_fqklp"]
+
+[node name="PanelContainer" type="PanelContainer"]
+auto_translate_mode = 1
+offset_left = -80.0
+offset_top = -205.0
+offset_right = -40.0
+offset_bottom = -165.0
+scale = Vector2(3, 3)
+script = ExtResource("1_fqklp")
+
+[node name="Labels" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+auto_translate_mode = 1
+layout_mode = 2

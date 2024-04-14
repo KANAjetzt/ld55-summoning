@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyighkqxbhict"]
+
+[ext_resource type="Script" path="res://Singletons/debug.gd" id="1_8ds80"]
+
+[node name="Debug" type="Node"]
+script = ExtResource("1_8ds80")
+override_mining_time = true
+override_mining_time_amount = 3.0

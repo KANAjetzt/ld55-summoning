@@ -4,8 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://dsvtodi8n6lt0" path="res://Cats/laser.png" id="2_bje7h"]
 
 [node name="Cat" instance=ExtResource("1_4rnpj")]
+script = null
 
 [node name="Sprite2D2" type="Sprite2D" parent="." index="1"]
 position = Vector2(1, 3)
-scale = Vector2(0.076, 0.076)
+scale = Vector2(0.044, 0.044)
 texture = ExtResource("2_bje7h")
