@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b0qt8n6gbxlat"]
+[gd_scene load_steps=14 format=3 uid="uid://b0qt8n6gbxlat"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_nu5bv"]
 [ext_resource type="PackedScene" uid="uid://bnjd3xnekunev" path="res://Cats/cat_miner.tscn" id="2_ma2mg"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://b4a73ga7o86ma" path="res://Buildings/mine.tscn" id="3_uhm5x"]
 [ext_resource type="PackedScene" uid="uid://dpjedk5o7w8rk" path="res://UI/shop.tscn" id="5_qrleq"]
 [ext_resource type="PackedScene" uid="uid://dudgniskyxns2" path="res://UI/dry_food_counter.tscn" id="5_tmh1l"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="7_ive38"]
+[ext_resource type="Script" path="res://camera_target.gd" id="7_y0ugt"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2D.gd" id="8_gjqs2"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gxcq8"]
 
@@ -22,6 +25,35 @@ background_mode = 1
 [node name="Main" type="Node"]
 script = ExtResource("1_nu5bv")
 
+[node name="Mines" type="Node" parent="."]
+
+[node name="Mine" parent="Mines" instance=ExtResource("3_uhm5x")]
+position = Vector2(4408, -635)
+
+[node name="Mine2" parent="Mines" instance=ExtResource("3_uhm5x")]
+position = Vector2(-1719, -453)
+
+[node name="Mine3" parent="Mines" instance=ExtResource("3_uhm5x")]
+position = Vector2(1886, 1801)
+
+[node name="Mine4" parent="Mines" instance=ExtResource("3_uhm5x")]
+position = Vector2(-534, 1970)
+
+[node name="Mine5" parent="Mines" instance=ExtResource("3_uhm5x")]
+position = Vector2(2543, 577)
+
+[node name="Mine6" parent="Mines" instance=ExtResource("3_uhm5x")]
+position = Vector2(240, 105)
+
+[node name="Mine7" parent="Mines" instance=ExtResource("3_uhm5x")]
+position = Vector2(-549, -707)
+
+[node name="Mine8" parent="Mines" instance=ExtResource("3_uhm5x")]
+position = Vector2(1435, -418)
+
+[node name="Mine9" parent="Mines" instance=ExtResource("3_uhm5x")]
+position = Vector2(-757, 307)
+
 [node name="Cats" type="Node" parent="."]
 
 [node name="Cat" parent="Cats" instance=ExtResource("2_ma2mg")]
@@ -36,8 +68,39 @@ position = Vector2(258, 400)
 [node name="Storage" parent="." instance=ExtResource("2_pq0lw")]
 position = Vector2(585, 342)
 
-[node name="Mine" parent="." instance=ExtResource("3_uhm5x")]
-position = Vector2(221, 154)
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(565, 317)
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+script = ExtResource("7_ive38")
+
+[node name="CameraMain" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(565, 317)
+script = ExtResource("8_gjqs2")
+priority_override = false
+priority = 0
+zoom = Vector2(1, 1)
+follow_mode = 1
+follow_target = NodePath("../CameraTarget")
+follow_parameters/damping = true
+follow_parameters/damping_value = 20.0
+frame_preview = true
+pixel_perfect = false
+limit/draw_limits = false
+limit/left = -10000000
+limit/top = -10000000
+limit/right = 10000000
+limit/bottom = 10000000
+limit/limit_node_target = NodePath("")
+limit/smoothed = false
+tween_parameters = null
+tween_on_load = true
+inactive_update_mode = 0
+
+[node name="CameraTarget" type="Node2D" parent="."]
+position = Vector2(565, 317)
+script = ExtResource("7_y0ugt")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -49,6 +112,7 @@ offset_left = -97.0
 offset_bottom = 40.0
 grow_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_gxcq8")
+metadata/_edit_lock_ = true
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PanelContainer"]
 layout_mode = 2
@@ -60,6 +124,7 @@ layout_mode = 2
 
 [node name="Shop" parent="CanvasLayer" instance=ExtResource("5_qrleq")]
 size_flags_vertical = 8
+metadata/_edit_lock_ = true
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer"]
 
