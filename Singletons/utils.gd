@@ -44,3 +44,8 @@ func spawn_projectile(projectile_data: ProjectileData, start_position: Vector2, 
 	new_projectile.data = projectile_data
 	new_projectile.target_position = target_position
 	Global.main.projectiles.add_child(new_projectile)
+
+
+func show_game_over() -> void:
+	Global.stats.time_played = Time.get_ticks_msec() / 1000 / 60
+	Global.main.game_over.init()

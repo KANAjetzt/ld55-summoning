@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b0qt8n6gbxlat"]
+[gd_scene load_steps=18 format=3 uid="uid://b0qt8n6gbxlat"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_nu5bv"]
 [ext_resource type="PackedScene" uid="uid://bnjd3xnekunev" path="res://Entities/Cats/cat_miner.tscn" id="2_ma2mg"]
@@ -11,7 +11,8 @@
 [ext_resource type="Script" path="res://camera_target.gd" id="7_y0ugt"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2D.gd" id="8_gjqs2"]
 [ext_resource type="Script" path="res://altar_preview.gd" id="11_dympo"]
-[ext_resource type="PackedScene" uid="uid://bs4jl7gkqp7nx" path="res://Entities/Aliens/alien.tscn" id="12_q7u5x"]
+[ext_resource type="PackedScene" uid="uid://dvkmdffpxno1h" path="res://Entities/Aliens/alien_clustor.tscn" id="12_w2cdb"]
+[ext_resource type="PackedScene" uid="uid://k4dw8byq2a8i" path="res://UI/game_over.tscn" id="13_766qe"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gxcq8"]
 
@@ -93,8 +94,50 @@ unique_name_in_owner = true
 
 [node name="Aliens" type="Node" parent="."]
 
-[node name="Alien" parent="Aliens" instance=ExtResource("12_q7u5x")]
-position = Vector2(632, -466)
+[node name="AlienClustor13" parent="Aliens" instance=ExtResource("12_w2cdb")]
+position = Vector2(961, -890)
+
+[node name="AlienClustor12" parent="Aliens" instance=ExtResource("12_w2cdb")]
+position = Vector2(2843, -710)
+
+[node name="AlienClustor11" parent="Aliens" instance=ExtResource("12_w2cdb")]
+position = Vector2(3227, -381)
+
+[node name="AlienClustor10" parent="Aliens" instance=ExtResource("12_w2cdb")]
+position = Vector2(2891, 27)
+
+[node name="AlienClustor9" parent="Aliens" instance=ExtResource("12_w2cdb")]
+position = Vector2(2076, -429)
+
+[node name="AlienClustor8" parent="Aliens" instance=ExtResource("12_w2cdb")]
+position = Vector2(2603, -285)
+
+[node name="AlienClustor7" parent="Aliens" instance=ExtResource("12_w2cdb")]
+position = Vector2(2160, 51)
+
+[node name="AlienClustor6" parent="Aliens" instance=ExtResource("12_w2cdb")]
+position = Vector2(1716, 1040)
+
+[node name="AlienClustor5" parent="Aliens" instance=ExtResource("12_w2cdb")]
+position = Vector2(1393, 1375)
+
+[node name="AlienClustor4" parent="Aliens" instance=ExtResource("12_w2cdb")]
+position = Vector2(2196, 1202)
+
+[node name="AlienClustor14" parent="Aliens" instance=ExtResource("12_w2cdb")]
+position = Vector2(949, 1393)
+
+[node name="AlienClustor3" parent="Aliens" instance=ExtResource("12_w2cdb")]
+position = Vector2(-663, 1190)
+
+[node name="AlienClustor15" parent="Aliens" instance=ExtResource("12_w2cdb")]
+position = Vector2(-1269, 266)
+
+[node name="AlienClustor2" parent="Aliens" instance=ExtResource("12_w2cdb")]
+position = Vector2(-1111, -387)
+
+[node name="AlienClustor" parent="Aliens" instance=ExtResource("12_w2cdb")]
+position = Vector2(425, -701)
 
 [node name="Projectiles" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -171,6 +214,8 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_cdnfs")
 metadata/_edit_lock_ = true
+
+[node name="GameOver" parent="CanvasLayer" instance=ExtResource("13_766qe")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ebfxl")

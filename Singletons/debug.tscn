@@ -7,3 +7,4 @@ script = ExtResource("1_8ds80")
 override_mining_time = true
 override_mining_time_amount = 3.0
 override_dry_food_count = true
+hide_all_debug_panel = true

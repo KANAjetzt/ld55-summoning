@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b6lwml3cddh7x"]
+[gd_scene load_steps=14 format=3 uid="uid://b6lwml3cddh7x"]
 
 [ext_resource type="Script" path="res://Buildings/storage.gd" id="1_ggwxb"]
 [ext_resource type="Texture2D" uid="uid://cwggwumpvkcvk" path="res://Buildings/storage_container.png" id="1_x56mw"]
@@ -27,6 +27,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(0, -181)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_sm5ob"]
 resource_name = "open"
@@ -44,9 +56,25 @@ tracks/0/keys = {
 "values": [Vector2(0, -181), Vector2(-207, -181)]
 }
 
+[sub_resource type="Animation" id="Animation_krpg0"]
+resource_name = "despawning"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1a5ss"]
 _data = {
 "RESET": SubResource("Animation_fe7vj"),
+"despawning": SubResource("Animation_krpg0"),
 "open": SubResource("Animation_sm5ob")
 }
 
@@ -100,7 +128,6 @@ libraries = {
 
 [node name="TakeDamageZone" parent="." instance=ExtResource("6_muj3e")]
 unique_name_in_owner = true
-scale = Vector2(1, 1)
 collision_layer = 2
 collision_mask = 5
 
@@ -112,3 +139,4 @@ debug_color = Color(0.759643, 0.41916, 0.464153, 0.42)
 
 [connection signal="body_entered" from="Awarnesse" to="." method="_on_awarnesse_body_entered"]
 [connection signal="body_exited" from="Awarnesse" to="." method="_on_awarnesse_body_exited"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

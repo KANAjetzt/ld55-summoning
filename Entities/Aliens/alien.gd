@@ -2,11 +2,11 @@ class_name Alien
 extends Entity
 
 
-signal despawning
+signal despawning(alien: Alien)
 
 @export var max_health := 3
 
-var current_target: Building
+var current_target: Building = null
 var damage_delt := false
 var current_health := max_health
 var previous_position := Vector2.ZERO
@@ -16,9 +16,13 @@ var velocity := Vector2.ZERO
 @onready var entity_visiblity_zone: EntityVisiblityZone = %EntityVisiblityZone
 
 
+func _init() -> void:
+	# Set modulate alpha in init so I can see them in the editor
+	modulate.a = 0.0
+
+
 func _ready() -> void:
 	entity_visiblity_zone.entity = self
-	attack()
 
 
 func _process(delta: float) -> void:
@@ -26,13 +30,16 @@ func _process(delta: float) -> void:
 		move_towards_next_building(delta)
 
 
-func despawn() -> void:
-	despawning.emit()
+func despawn(by_building := false) -> void:
+	despawning.emit(self)
 	animation_player.play_backwards("spawn")
+	if not by_building:
+		Global.stats.removed_aliens = Global.stats.removed_aliens + 1
 	queue_free()
 
 
 func attack() -> void:
+	animation_player.play("spawn")
 	current_target = Utils.get_closest_building(global_position)
 
 
@@ -60,4 +67,9 @@ func _on_collider_buildings_area_entered(area: Area2D) -> void:
 		if not damage_delt:
 			take_damage_zone.building.take_damage(1)
 			damage_delt = true
-			despawn()
+			despawn(true)
+
+
+func _on_awarnesse_area_entered(area: Area2D) -> void:
+	if not current_target:
+		attack()

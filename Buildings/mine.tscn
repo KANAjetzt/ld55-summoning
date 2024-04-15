@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b4a73ga7o86ma"]
+[gd_scene load_steps=11 format=3 uid="uid://b4a73ga7o86ma"]
 
 [ext_resource type="Script" path="res://Buildings/mine.gd" id="1_5omvh"]
 [ext_resource type="Texture2D" uid="uid://ebtvmsxs333o" path="res://Buildings/mine.png" id="1_nqqe4"]
@@ -14,6 +14,43 @@ radius = 420.039
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bbodx"]
 radius = 140.727
+
+[sub_resource type="Animation" id="Animation_gjgpq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_88xr1"]
+resource_name = "despawn"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c1q3p"]
+_data = {
+"RESET": SubResource("Animation_gjgpq"),
+"despawn": SubResource("Animation_88xr1")
+}
 
 [node name="Mine" type="Node2D" groups=["mines"]]
 scale = Vector2(0.35, 0.35)
@@ -49,13 +86,19 @@ shape = SubResource("CircleShape2D_r4olf")
 
 [node name="TakeDamageZone" parent="." instance=ExtResource("4_dflbt")]
 unique_name_in_owner = true
-scale = Vector2(1, 1)
+collision_layer = 2
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TakeDamageZone"]
 position = Vector2(28.5714, 2.85714)
-scale = Vector2(1, 1)
 shape = SubResource("CircleShape2D_bbodx")
 debug_color = Color(0.73757, 0.443148, 0.416458, 0.42)
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_c1q3p")
+}
+
 [connection signal="body_entered" from="Awarnesse" to="." method="_on_awarnesse_body_entered"]
 [connection signal="body_exited" from="Awarnesse" to="." method="_on_awarnesse_body_exited"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

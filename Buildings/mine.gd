@@ -4,6 +4,7 @@ extends Building
 
 signal entered(capacity_current)
 signal exited(capacity_current)
+signal despawning(mine: BuildingMine)
 
 @export var capacity_max := 3
 @export var mining_time: float = 10 if not Debug.override_mining_time else Debug.override_mining_time_amount
@@ -15,6 +16,7 @@ var capacity_target := 0
 @onready var entrance: Area2D = %Entrance
 @onready var entrance_shape: CollisionShape2D = %EntranceShape
 @onready var take_damage_zone: BuildingTakeDamageZone = %TakeDamageZone
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
 func _ready() -> void:
@@ -31,6 +33,9 @@ func _exit_tree() -> void:
 func take_damage(amount := 1) -> void:
 	super()
 	info_bar.set_health(health_current, health_max)
+	if health_current == 0:
+		animation_player.play("despawn")
+
 
 
 func target() -> void:
@@ -85,3 +90,9 @@ func _on_awarnesse_body_exited(body: Node2D) -> void:
 
 		miner.is_at_mine = false
 		miner.mine_current = null
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "despawn":
+		Global.stats.lost_buildings = Global.stats.lost_buildings + 1
+		queue_free()

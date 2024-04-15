@@ -2,6 +2,8 @@ class_name BuildingStorage
 extends Building
 
 
+signal despawned
+
 @export var storing_time: float = 3.0
 
 var is_lid_open := false
@@ -36,6 +38,14 @@ func _ready() -> void:
 func take_damage(amount := 1) -> void:
 	super()
 	info_bar.set_health(health_current, health_max)
+
+	if health_current == 0:
+		despawn()
+
+
+func despawn() -> void:
+	animation_player.play("despawning")
+
 
 
 func lid_open() -> void:
@@ -72,3 +82,9 @@ func _on_awarnesse_body_exited(body: Node2D) -> void:
 		miner = body
 		miner.is_at_storage = false
 		miner.just_exited_area = true
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "despawning":
+		Global.stats.lost_buildings = Global.stats.lost_buildings + 1
+		Utils.show_game_over()

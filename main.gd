@@ -7,6 +7,7 @@ extends Node2D
 @onready var altars: Node = %Altars
 @onready var cats: Node = %Cats
 @onready var projectiles: Node2D = %Projectiles
+@onready var game_over: UIGameOver = $CanvasLayer/GameOver
 
 
 func _ready() -> void:
@@ -19,6 +20,9 @@ func _process(delta: float) -> void:
 
 	if Global.cat_warrior_selected and Input.is_action_just_pressed("select") and not Global.mouse_over_cat_warrior:
 		handle_warrior_placemend()
+
+	if not Global.mouse_over_cat_warrior and Input.is_action_just_pressed("deselect"):
+		Global.cat_warrior_selected.deselect()
 
 
 func _on_shop_altar_bought(item_data: AltarData) -> void:

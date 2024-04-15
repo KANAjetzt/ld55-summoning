@@ -61,6 +61,7 @@ func _physics_process(delta: float) -> void:
 func search_mine() -> void:
 	mine_target = Utils.get_closest_mine_from_storage_with_space()
 	mine_target.target()
+	mine_target.despawning.connect(_on_mine_target_despawning)
 
 
 func move_towards_mine(delta: float) -> void:
@@ -109,6 +110,7 @@ func store_food() -> void:
 
 	timer_storing.start()
 	is_storing = true
+	Global.stats.dry_food_collected = Global.stats.dry_food_collected + 1
 
 
 func stop_storing() -> void:
@@ -129,3 +131,7 @@ func _on_timer_storing_timeout() -> void:
 	food_carrying = food_carrying - 1
 	Global.add_dry_food(1)
 	stop_storing()
+
+
+func _on_mine_target_despawning(mine: BuildingMine) -> void:
+	search_mine()

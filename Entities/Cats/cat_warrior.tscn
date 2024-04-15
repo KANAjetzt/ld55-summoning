@@ -89,10 +89,11 @@ shape = SubResource("CircleShape2D_m71o5")
 
 [node name="TimerLaser" type="Timer" parent="." index="9"]
 unique_name_in_owner = true
-wait_time = 0.25
+wait_time = 0.75
 one_shot = true
 
 [connection signal="mouse_entered" from="ClickListener" to="." method="_on_click_listener_mouse_entered"]
 [connection signal="mouse_exited" from="ClickListener" to="." method="_on_click_listener_mouse_exited"]
 [connection signal="area_entered" from="Awarnesse" to="." method="_on_awarnesse_area_entered"]
+[connection signal="area_exited" from="Awarnesse" to="." method="_on_awarnesse_area_exited"]
 [connection signal="timeout" from="TimerLaser" to="." method="_on_timer_laser_timeout"]

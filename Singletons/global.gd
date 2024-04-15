@@ -5,6 +5,7 @@ signal dry_food_count_changed(dry_food_count: int)
 signal aliens_attacking_count_changed(aliens_attacking_count: int)
 
 @export var dry_food_count: int = 0 if not Debug.override_dry_food_count else Debug.override_dry_food_count_amount
+@export var stats: StatsData
 
 var main: Main
 var aliens_attacking_count := 0

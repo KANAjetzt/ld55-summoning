@@ -23,6 +23,7 @@ var target_enemy: Alien:
 			target_enemy = new_target_enemy
 			if debug_panel:
 				debug_panel.update_label(2, "target_enemy: %s" % target_enemy)
+var enemies_in_range: Array[Alien] = []
 
 @onready var click_listener: Area2D = %ClickListener
 @onready var highlighted: TextureRect = $Highlighted
@@ -138,9 +139,26 @@ func _on_awarnesse_area_entered(area: Area2D) -> void:
 		if entity_visiblity_zone.entity is Alien:
 			alien = entity_visiblity_zone.entity
 			if is_instance_valid(alien):
-				target_enemy = alien
-				target_enemy.despawning.connect(_on_target_enemy_despawning)
-				fire_laser()
+				enemies_in_range.push_back(alien)
+				if not target_enemy:
+					target_enemy = alien
+					target_enemy.despawning.connect(_on_target_enemy_despawning)
+					fire_laser()
+
+
+func _on_awarnesse_area_exited(area: Area2D) -> void:
+	var entity_visiblity_zone: EntityVisiblityZone
+	var alien: Alien
+
+	if area is EntityVisiblityZone:
+		entity_visiblity_zone = area
+		if entity_visiblity_zone.entity is Alien:
+			alien = entity_visiblity_zone.entity
+			if is_instance_valid(alien):
+				if alien == target_enemy:
+					target_enemy = null
+
+				enemies_in_range.erase(alien)
 
 
 func _on_timer_laser_timeout() -> void:
@@ -148,5 +166,11 @@ func _on_timer_laser_timeout() -> void:
 		fire_laser()
 
 
-func _on_target_enemy_despawning() -> void:
+func _on_target_enemy_despawning(alien: Alien) -> void:
 	target_enemy = null
+	enemies_in_range.erase(alien)
+	if not enemies_in_range.is_empty():
+		target_enemy = enemies_in_range[0]
+
+
+
