@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cal7tnnv6ymk7" path="res://Altars/Chair/chair.tscn" id="1_h2v51"]
 [ext_resource type="Script" path="res://Altars/_definitions/altar_data.gd" id="2_mgeja"]
 [ext_resource type="Texture2D" uid="uid://n3o6covmfveo" path="res://Altars/Chair/chair_icon.png" id="2_reaxa"]
-[ext_resource type="PackedScene" uid="uid://bnjd3xnekunev" path="res://Cats/cat_miner.tscn" id="3_ic824"]
+[ext_resource type="PackedScene" uid="uid://blici2djpfp25" path="res://Cats/cat_warrior.tscn" id="3_6u3xi"]
 
 [resource]
 script = ExtResource("2_mgeja")
@@ -11,5 +11,5 @@ id = "altar_chair"
 title = "Chair"
 icon = ExtResource("2_reaxa")
 scene = ExtResource("1_h2v51")
-scene_cat = ExtResource("3_ic824")
+scene_cat = ExtResource("3_6u3xi")
 cost = 10

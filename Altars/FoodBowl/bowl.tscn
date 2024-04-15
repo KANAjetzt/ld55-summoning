@@ -1,8 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://75f6lvivf5wu"]
+[gd_scene load_steps=3 format=3 uid="uid://75f6lvivf5wu"]
 
 [ext_resource type="PackedScene" uid="uid://kfrjjt5p4eiw" path="res://Altars/_definitions/altar.tscn" id="1_a41et"]
+[ext_resource type="Script" path="res://Altars/FoodBowl/bowl.gd" id="2_hw112"]
 
 [node name="AltarBowl" instance=ExtResource("1_a41et")]
+script = ExtResource("2_hw112")
 
 [node name="Sprite2D" parent="." index="0"]
 scale = Vector2(0.2, 0.2)
+
+[node name="TimerSpawnCat" parent="." index="1"]
+wait_time = 3.0
+
+[connection signal="timeout" from="TimerSpawnCat" to="." method="_on_timer_spawn_cat_timeout"]

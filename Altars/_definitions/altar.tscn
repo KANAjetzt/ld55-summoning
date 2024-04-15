@@ -11,6 +11,7 @@ texture = ExtResource("2_y4tbc")
 
 [node name="TimerSpawnCat" type="Timer" parent="."]
 unique_name_in_owner = true
+one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true

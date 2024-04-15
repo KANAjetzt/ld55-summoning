@@ -104,7 +104,6 @@ texture = ExtResource("2_qwo7w")
 
 [node name="TimerSpawnCat" parent="." index="2"]
 wait_time = 5.0
-one_shot = true
 
 [node name="AnimationPlayer" parent="." index="3"]
 libraries = {
