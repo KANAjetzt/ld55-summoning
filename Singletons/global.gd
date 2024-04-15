@@ -18,6 +18,11 @@ func add_dry_food(amount: int) -> void:
 	dry_food_count_changed.emit(dry_food_count)
 
 
+func remove_dry_food(amount: int) -> void:
+	dry_food_count = dry_food_count - amount
+	dry_food_count_changed.emit(dry_food_count)
+
+
 func set_aliens_attacking_count(amount: int) -> void:
 	aliens_attacking_count = aliens_attacking_count + amount
 	aliens_attacking_count_changed.emit(aliens_attacking_count)

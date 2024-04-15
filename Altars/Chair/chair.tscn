@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://pbfehijocx5u"]
+[gd_scene load_steps=8 format=3 uid="uid://cal7tnnv6ymk7"]
 
 [ext_resource type="Texture2D" uid="uid://da7316xupl67v" path="res://Altars/Chair/chair.png" id="1_3qwed"]
-[ext_resource type="Script" path="res://Altars/_definitions/appearances.gd" id="1_7ri6d"]
+[ext_resource type="PackedScene" uid="uid://kfrjjt5p4eiw" path="res://Altars/_definitions/altar.tscn" id="1_vaien"]
+[ext_resource type="Script" path="res://Altars/Chair/chair.gd" id="2_818fy"]
 [ext_resource type="Texture2D" uid="uid://cqy877batotx2" path="res://Altars/Chair/human.png" id="2_qwo7w"]
 
 [sub_resource type="Animation" id="Animation_n45rm"]
@@ -89,20 +90,27 @@ _data = {
 "spawn": SubResource("Animation_5j0ib")
 }
 
-[node name="ChairAppearance" type="Node2D"]
-script = ExtResource("1_7ri6d")
+[node name="AltarChair" instance=ExtResource("1_vaien")]
+script = ExtResource("2_818fy")
 
-[node name="Chair" type="Sprite2D" parent="."]
+[node name="Sprite2D" parent="." index="0"]
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("1_3qwed")
 
-[node name="Human" type="Sprite2D" parent="."]
+[node name="Human" type="Sprite2D" parent="." index="1"]
 position = Vector2(60, -2)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_qwo7w")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="TimerSpawnCat" parent="." index="2"]
+wait_time = 5.0
+one_shot = true
+
+[node name="AnimationPlayer" parent="." index="3"]
 libraries = {
 "": SubResource("AnimationLibrary_wdm80")
 }
 autoplay = "spawn"
+
+[connection signal="timeout" from="TimerSpawnCat" to="." method="_on_timer_spawn_cat_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

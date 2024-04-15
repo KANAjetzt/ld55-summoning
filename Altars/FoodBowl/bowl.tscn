@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://75f6lvivf5wu"]
+
+[ext_resource type="PackedScene" uid="uid://kfrjjt5p4eiw" path="res://Altars/_definitions/altar.tscn" id="1_a41et"]
+
+[node name="AltarBowl" instance=ExtResource("1_a41et")]
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(0.2, 0.2)

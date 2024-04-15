@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b0qt8n6gbxlat"]
+[gd_scene load_steps=15 format=3 uid="uid://b0qt8n6gbxlat"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_nu5bv"]
 [ext_resource type="PackedScene" uid="uid://bnjd3xnekunev" path="res://Cats/cat_miner.tscn" id="2_ma2mg"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="7_ive38"]
 [ext_resource type="Script" path="res://camera_target.gd" id="7_y0ugt"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2D.gd" id="8_gjqs2"]
-[ext_resource type="PackedScene" uid="uid://pbfehijocx5u" path="res://Altars/Chair/chair_appearance.tscn" id="10_fjou2"]
 [ext_resource type="Script" path="res://altar_preview.gd" id="11_dympo"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gxcq8"]
@@ -159,8 +158,5 @@ metadata/_edit_lock_ = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ebfxl")
-
-[node name="ChairAppearance" parent="." instance=ExtResource("10_fjou2")]
-position = Vector2(173, 242)
 
 [connection signal="altar_bought" from="CanvasLayer/Shop" to="." method="_on_shop_altar_bought"]

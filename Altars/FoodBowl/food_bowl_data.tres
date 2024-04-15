@@ -1,13 +1,15 @@
-[gd_resource type="Resource" script_class="AltarData" load_steps=4 format=3 uid="uid://beyqet2omknxg"]
+[gd_resource type="Resource" script_class="AltarData" load_steps=5 format=3 uid="uid://beyqet2omknxg"]
 
-[ext_resource type="Script" path="res://Altars/_definitions/altar.gd" id="1_83e51"]
-[ext_resource type="PackedScene" uid="uid://bao6inxmg7xx7" path="res://Altars/FoodBowl/bowl_appearance.tscn" id="1_kxkot"]
+[ext_resource type="Script" path="res://Altars/_definitions/altar_data.gd" id="1_83e51"]
+[ext_resource type="PackedScene" uid="uid://75f6lvivf5wu" path="res://Altars/FoodBowl/bowl.tscn" id="1_kxkot"]
 [ext_resource type="Texture2D" uid="uid://qdrfd4ch8mqm" path="res://Altars/FoodBowl/bowl_icon.png" id="2_3f355"]
+[ext_resource type="PackedScene" uid="uid://bnjd3xnekunev" path="res://Cats/cat_miner.tscn" id="3_g70my"]
 
 [resource]
 script = ExtResource("1_83e51")
 id = "altar_food_bowl"
 title = "Food Bowl"
 icon = ExtResource("2_3f355")
-appearance = ExtResource("1_kxkot")
+scene = ExtResource("1_kxkot")
+scene_cat = ExtResource("3_g70my")
 cost = 3

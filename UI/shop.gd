@@ -20,5 +20,6 @@ func _on_shop_button_item_selected(shop_button: UIShopButtonItem, item_data: Alt
 		return
 
 	Global.altar_selected = item_data
+	Global.remove_dry_food(item_data.cost)
 
 	altar_bought.emit(item_data)
