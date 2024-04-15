@@ -1,4 +1,5 @@
-extends Control
+class_name UIShop
+extends PanelContainer
 
 
 signal altar_bought(altar_data: AltarData)

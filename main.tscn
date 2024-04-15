@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://b0qt8n6gbxlat"]
+[gd_scene load_steps=16 format=3 uid="uid://b0qt8n6gbxlat"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_nu5bv"]
 [ext_resource type="PackedScene" uid="uid://bnjd3xnekunev" path="res://Cats/cat_miner.tscn" id="2_ma2mg"]
 [ext_resource type="PackedScene" uid="uid://b6lwml3cddh7x" path="res://Buildings/storage.tscn" id="2_pq0lw"]
 [ext_resource type="PackedScene" uid="uid://b4a73ga7o86ma" path="res://Buildings/mine.tscn" id="3_uhm5x"]
+[ext_resource type="PackedScene" uid="uid://blici2djpfp25" path="res://Cats/cat_warrior.tscn" id="5_moay2"]
 [ext_resource type="PackedScene" uid="uid://dpjedk5o7w8rk" path="res://UI/shop.tscn" id="5_qrleq"]
 [ext_resource type="PackedScene" uid="uid://dudgniskyxns2" path="res://UI/dry_food_counter.tscn" id="5_tmh1l"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="7_ive38"]
@@ -79,6 +80,15 @@ position = Vector2(198, 437)
 
 [node name="CatMiner3" parent="Cats" instance=ExtResource("2_ma2mg")]
 position = Vector2(205, 363)
+
+[node name="CatWarrior" parent="Cats" instance=ExtResource("5_moay2")]
+position = Vector2(927, 364)
+
+[node name="CatWarrior2" parent="Cats" instance=ExtResource("5_moay2")]
+position = Vector2(895, 512)
+
+[node name="CatWarrior3" parent="Cats" instance=ExtResource("5_moay2")]
+position = Vector2(1041, 383)
 
 [node name="Altars" type="Node" parent="."]
 unique_name_in_owner = true

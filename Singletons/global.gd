@@ -2,7 +2,7 @@ extends Node
 
 
 signal dry_food_count_changed(dry_food_count: int)
-signal  aliens_attacking_count_changed(aliens_attacking_count: int)
+signal aliens_attacking_count_changed(aliens_attacking_count: int)
 
 @export var dry_food_count: int = 0 if not Debug.override_dry_food_count else Debug.override_dry_food_count_amount
 
@@ -11,6 +11,15 @@ var storage: BuildingStorage
 var mines: Array[BuildingMine]
 var mines_by_distance_to_storage: Array[BuildingMine]
 var altar_selected: AltarData = null
+var mouse_over_cat_warrior := false
+var cat_warrior_selected: CatWarrior = null: set = _set_cat_warrior_selected
+
+
+func _set_cat_warrior_selected(_new_cat_warrior_selected):
+	if cat_warrior_selected and not _new_cat_warrior_selected == cat_warrior_selected:
+		cat_warrior_selected.deselect()
+
+	cat_warrior_selected = _new_cat_warrior_selected
 
 
 func add_dry_food(amount: int) -> void:

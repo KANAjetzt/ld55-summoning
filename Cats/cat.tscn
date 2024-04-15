@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://bklus503n8onc" path="res://Cats/cat.png" id="2_6clg7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yid3q"]
-radius = 16.0
-height = 42.0
+radius = 24.0
+height = 60.0
 
 [node name="Cat" type="AnimatableBody2D"]
 script = ExtResource("1_tj1yb")
