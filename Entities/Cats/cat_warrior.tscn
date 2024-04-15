@@ -72,6 +72,7 @@ texture = ExtResource("5_xj06e")
 
 [node name="DebugPanel" parent="." index="7" instance=ExtResource("4_gbs6n")]
 unique_name_in_owner = true
+visible = false
 offset_left = -60.0
 offset_top = -164.0
 offset_right = -20.0

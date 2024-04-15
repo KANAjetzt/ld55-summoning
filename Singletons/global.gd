@@ -15,6 +15,17 @@ var mines_by_distance_to_storage: Array[BuildingMine]
 var altar_selected: AltarData = null
 var mouse_over_cat_warrior := false
 var cat_warrior_selected: CatWarrior = null: set = _set_cat_warrior_selected
+var alien_spawn_points: Array[Node2D] = []
+var cat_warrior_count: int = 0
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("debug_0"):
+		for node in get_tree().get_nodes_in_group("debug_panel"):
+			if node.visible:
+				node.hide()
+			else:
+				node.show()
 
 
 func _set_cat_warrior_selected(_new_cat_warrior_selected):

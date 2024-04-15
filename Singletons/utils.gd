@@ -49,3 +49,7 @@ func spawn_projectile(projectile_data: ProjectileData, start_position: Vector2, 
 func show_game_over() -> void:
 	Global.stats.time_played = Time.get_ticks_msec() / 1000 / 60
 	Global.main.game_over.init()
+
+
+func is_int_in_range(value: int, min_value: int, max_value: int) -> bool:
+	return value >= min_value and value <= max_value

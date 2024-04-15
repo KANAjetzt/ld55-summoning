@@ -36,6 +36,7 @@ func _ready() -> void:
 	debug_panel.add_label("")
 	debug_panel.add_label("")
 	debug_panel.add_label("")
+	debug_panel.add_label("enemies_in_range: %s")
 
 
 func _process(delta: float) -> void:
@@ -140,6 +141,7 @@ func _on_awarnesse_area_entered(area: Area2D) -> void:
 			alien = entity_visiblity_zone.entity
 			if is_instance_valid(alien):
 				enemies_in_range.push_back(alien)
+				debug_panel.update_label(3, "enemies_in_range: %s" % enemies_in_range)
 				if not target_enemy:
 					target_enemy = alien
 					target_enemy.despawning.connect(_on_target_enemy_despawning)
@@ -159,6 +161,7 @@ func _on_awarnesse_area_exited(area: Area2D) -> void:
 					target_enemy = null
 
 				enemies_in_range.erase(alien)
+				debug_panel.update_label(3, "enemies_in_range: %s" % enemies_in_range)
 
 
 func _on_timer_laser_timeout() -> void:
@@ -169,6 +172,7 @@ func _on_timer_laser_timeout() -> void:
 func _on_target_enemy_despawning(alien: Alien) -> void:
 	target_enemy = null
 	enemies_in_range.erase(alien)
+	debug_panel.update_label(3, "enemies_in_range: %s" % enemies_in_range)
 	if not enemies_in_range.is_empty():
 		target_enemy = enemies_in_range[0]
 

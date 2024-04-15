@@ -33,6 +33,7 @@ one_shot = true
 
 [node name="DebugPanel" parent="." index="6" instance=ExtResource("4_v7tq4")]
 unique_name_in_owner = true
+visible = false
 offset_left = -20.0
 offset_top = -69.0
 offset_right = 20.0

@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://b4a73ga7o86ma"]
 
 [ext_resource type="Script" path="res://Buildings/mine.gd" id="1_5omvh"]
-[ext_resource type="Texture2D" uid="uid://ebtvmsxs333o" path="res://Buildings/mine.png" id="1_nqqe4"]
+[ext_resource type="Texture2D" uid="uid://cccnvf3nho74w" path="res://Buildings/mine_v2.png" id="2_ok27o"]
 [ext_resource type="PackedScene" uid="uid://cqf2t0k4fmlo2" path="res://Buildings/info_bar.tscn" id="3_oo2kx"]
 [ext_resource type="PackedScene" uid="uid://65keh6u0cb7e" path="res://Buildings/take_damage_zone.tscn" id="4_dflbt"]
 
@@ -55,10 +55,11 @@ _data = {
 [node name="Mine" type="Node2D" groups=["mines"]]
 scale = Vector2(0.35, 0.35)
 script = ExtResource("1_5omvh")
+mining_time = 5.0
 health_max = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_nqqe4")
+texture = ExtResource("2_ok27o")
 
 [node name="InfoBar" parent="." instance=ExtResource("3_oo2kx")]
 unique_name_in_owner = true
@@ -70,6 +71,7 @@ scale = Vector2(4, 4)
 
 [node name="Entrance" type="Area2D" parent="."]
 unique_name_in_owner = true
+position = Vector2(-34.2857, 91.4286)
 collision_layer = 2
 
 [node name="EntranceShape" type="CollisionShape2D" parent="Entrance"]

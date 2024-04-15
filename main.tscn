@@ -4,9 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://bnjd3xnekunev" path="res://Entities/Cats/cat_miner.tscn" id="2_ma2mg"]
 [ext_resource type="PackedScene" uid="uid://b6lwml3cddh7x" path="res://Buildings/storage.tscn" id="2_pq0lw"]
 [ext_resource type="PackedScene" uid="uid://b4a73ga7o86ma" path="res://Buildings/mine.tscn" id="3_uhm5x"]
-[ext_resource type="PackedScene" uid="uid://blici2djpfp25" path="res://Entities/Cats/cat_warrior.tscn" id="5_moay2"]
 [ext_resource type="PackedScene" uid="uid://dpjedk5o7w8rk" path="res://UI/shop.tscn" id="5_qrleq"]
 [ext_resource type="PackedScene" uid="uid://dudgniskyxns2" path="res://UI/dry_food_counter.tscn" id="5_tmh1l"]
+[ext_resource type="PackedScene" uid="uid://jhvlp31g8mfa" path="res://Entities/Aliens/alien_spawn_point.tscn" id="6_5s6oa"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="7_ive38"]
 [ext_resource type="Script" path="res://camera_target.gd" id="7_y0ugt"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2D.gd" id="8_gjqs2"]
@@ -66,33 +66,19 @@ position = Vector2(-757, 307)
 unique_name_in_owner = true
 
 [node name="CatMiner" parent="Cats" instance=ExtResource("2_ma2mg")]
-position = Vector2(63, 425)
-
-[node name="CatMiner4" parent="Cats" instance=ExtResource("2_ma2mg")]
-position = Vector2(130, 449)
-
-[node name="CatMiner5" parent="Cats" instance=ExtResource("2_ma2mg")]
-position = Vector2(130, 368)
-
-[node name="CatMiner6" parent="Cats" instance=ExtResource("2_ma2mg")]
-position = Vector2(38, 345)
+position = Vector2(118, 416)
 
 [node name="CatMiner2" parent="Cats" instance=ExtResource("2_ma2mg")]
-position = Vector2(198, 437)
+position = Vector2(230, 414)
 
 [node name="CatMiner3" parent="Cats" instance=ExtResource("2_ma2mg")]
-position = Vector2(205, 363)
-
-[node name="CatWarrior2" parent="Cats" instance=ExtResource("5_moay2")]
-position = Vector2(-202, -214)
-
-[node name="CatWarrior" parent="Cats" instance=ExtResource("5_moay2")]
-position = Vector2(76, 175)
+position = Vector2(194, 342)
 
 [node name="Altars" type="Node" parent="."]
 unique_name_in_owner = true
 
 [node name="Aliens" type="Node" parent="."]
+unique_name_in_owner = true
 
 [node name="AlienClustor13" parent="Aliens" instance=ExtResource("12_w2cdb")]
 position = Vector2(961, -890)
@@ -119,13 +105,13 @@ position = Vector2(2160, 51)
 position = Vector2(1716, 1040)
 
 [node name="AlienClustor5" parent="Aliens" instance=ExtResource("12_w2cdb")]
-position = Vector2(1393, 1375)
+position = Vector2(1406, 1549)
 
 [node name="AlienClustor4" parent="Aliens" instance=ExtResource("12_w2cdb")]
 position = Vector2(2196, 1202)
 
 [node name="AlienClustor14" parent="Aliens" instance=ExtResource("12_w2cdb")]
-position = Vector2(949, 1393)
+position = Vector2(-77, 1397)
 
 [node name="AlienClustor3" parent="Aliens" instance=ExtResource("12_w2cdb")]
 position = Vector2(-663, 1190)
@@ -138,6 +124,28 @@ position = Vector2(-1111, -387)
 
 [node name="AlienClustor" parent="Aliens" instance=ExtResource("12_w2cdb")]
 position = Vector2(425, -701)
+
+[node name="AlienSpawnPoints" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="AlienSpawnPoint3" parent="AlienSpawnPoints" instance=ExtResource("6_5s6oa")]
+position = Vector2(1544, -1427)
+scale = Vector2(0.760799, 0.760799)
+
+[node name="AlienSpawnPoint2" parent="AlienSpawnPoints" instance=ExtResource("6_5s6oa")]
+position = Vector2(941, 2574)
+scale = Vector2(0.64, 0.64)
+
+[node name="AlienSpawnPoint5" parent="AlienSpawnPoints" instance=ExtResource("6_5s6oa")]
+position = Vector2(3517, 957)
+scale = Vector2(0.4096, 0.4096)
+
+[node name="AlienSpawnPoint4" parent="AlienSpawnPoints" instance=ExtResource("6_5s6oa")]
+position = Vector2(-1570, 1241)
+scale = Vector2(0.64, 0.64)
+
+[node name="AlienSpawnPoint" parent="AlienSpawnPoints" instance=ExtResource("6_5s6oa")]
+position = Vector2(-632, -1438)
 
 [node name="Projectiles" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -220,4 +228,8 @@ metadata/_edit_lock_ = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ebfxl")
 
+[node name="TimerSpawnAlien" type="Timer" parent="."]
+unique_name_in_owner = true
+
 [connection signal="altar_bought" from="CanvasLayer/Shop" to="." method="_on_shop_altar_bought"]
+[connection signal="timeout" from="TimerSpawnAlien" to="." method="_on_timer_spawn_alien_timeout"]

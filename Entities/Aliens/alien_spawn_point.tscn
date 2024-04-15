@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://jhvlp31g8mfa"]
+
+[ext_resource type="Texture2D" uid="uid://1i3vpi7ti8yc" path="res://Entities/Aliens/alien.png" id="1_agil8"]
+[ext_resource type="Script" path="res://Entities/Aliens/alien_spawn_point.gd" id="2_wratn"]
+
+[node name="AlienSpawnPoint" type="Sprite2D"]
+modulate = Color(0.964349, 0.000245852, 0.837953, 1)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("1_agil8")
+script = ExtResource("2_wratn")
