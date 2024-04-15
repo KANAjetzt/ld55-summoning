@@ -20,6 +20,7 @@ var cat_miner_in_area := 0:
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 @onready var debug_panel: UIDebugPanel = %DebugPanel
 @onready var lid: Sprite2D = %Lid
+@onready var take_damage_zone: BuildingTakeDamageZone = %TakeDamageZone
 
 
 func _ready() -> void:
@@ -27,6 +28,7 @@ func _ready() -> void:
 
 	info_bar.set_health(health_current, health_max)
 	info_bar.hide_capacity()
+	take_damage_zone.building = self
 
 	debug_panel.add_label("")
 

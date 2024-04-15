@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://b4a73ga7o86ma"]
+[gd_scene load_steps=8 format=3 uid="uid://b4a73ga7o86ma"]
 
 [ext_resource type="Script" path="res://Buildings/mine.gd" id="1_5omvh"]
 [ext_resource type="Texture2D" uid="uid://ebtvmsxs333o" path="res://Buildings/mine.png" id="1_nqqe4"]
 [ext_resource type="PackedScene" uid="uid://cqf2t0k4fmlo2" path="res://Buildings/info_bar.tscn" id="3_oo2kx"]
+[ext_resource type="PackedScene" uid="uid://65keh6u0cb7e" path="res://Buildings/take_damage_zone.tscn" id="4_dflbt"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_447gq"]
 radius = 80.0
@@ -10,6 +11,9 @@ height = 240.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r4olf"]
 radius = 420.039
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bbodx"]
+radius = 140.727
 
 [node name="Mine" type="Node2D" groups=["mines"]]
 scale = Vector2(0.35, 0.35)
@@ -42,6 +46,16 @@ collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Awarnesse"]
 shape = SubResource("CircleShape2D_r4olf")
+
+[node name="TakeDamageZone" parent="." instance=ExtResource("4_dflbt")]
+unique_name_in_owner = true
+scale = Vector2(1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TakeDamageZone"]
+position = Vector2(28.5714, 2.85714)
+scale = Vector2(1, 1)
+shape = SubResource("CircleShape2D_bbodx")
+debug_color = Color(0.73757, 0.443148, 0.416458, 0.42)
 
 [connection signal="body_entered" from="Awarnesse" to="." method="_on_awarnesse_body_entered"]
 [connection signal="body_exited" from="Awarnesse" to="." method="_on_awarnesse_body_exited"]

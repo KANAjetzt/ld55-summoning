@@ -14,12 +14,14 @@ var capacity_target := 0
 @onready var info_bar: UIInfoBar = %InfoBar
 @onready var entrance: Area2D = %Entrance
 @onready var entrance_shape: CollisionShape2D = %EntranceShape
+@onready var take_damage_zone: BuildingTakeDamageZone = %TakeDamageZone
 
 
 func _ready() -> void:
 	Global.add_mine(self)
 	info_bar.set_health(health_current, health_max)
 	info_bar.set_capacity(capacity_current, capacity_max)
+	take_damage_zone.building = self
 
 
 func _exit_tree() -> void:

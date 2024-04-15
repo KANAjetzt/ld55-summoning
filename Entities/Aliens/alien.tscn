@@ -1,0 +1,82 @@
+[gd_scene load_steps=8 format=3 uid="uid://bs4jl7gkqp7nx"]
+
+[ext_resource type="Script" path="res://Entities/Aliens/alien.gd" id="1_ccsbg"]
+[ext_resource type="Texture2D" uid="uid://1i3vpi7ti8yc" path="res://Entities/Aliens/alien.png" id="1_pb080"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_154dv"]
+radius = 14.0
+height = 28.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ltrsd"]
+radius = 15.0333
+
+[sub_resource type="Animation" id="Animation_xlmhs"]
+resource_name = "spawn"
+length = 0.3
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_argc6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_478nb"]
+_data = {
+"RESET": SubResource("Animation_argc6"),
+"spawn": SubResource("Animation_xlmhs")
+}
+
+[node name="Alien" type="AnimatableBody2D"]
+collision_layer = 4
+collision_mask = 6
+script = ExtResource("1_ccsbg")
+speed_multiplier = 5.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.662745, 0.376471, 0.333333, 1)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_pb080")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_154dv")
+debug_color = Color(0, 0.6, 0.701961, 0.0666667)
+
+[node name="ColliderBuildings" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ColliderBuildings"]
+shape = SubResource("CircleShape2D_ltrsd")
+debug_color = Color(0.809445, 0.321821, 0.66239, 0.42)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_478nb")
+}
+autoplay = "spawn"
+
+[connection signal="area_entered" from="ColliderBuildings" to="." method="_on_collider_buildings_area_entered"]

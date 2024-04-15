@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Altars/_definitions/altar_data.gd" id="1_83e51"]
 [ext_resource type="PackedScene" uid="uid://75f6lvivf5wu" path="res://Altars/FoodBowl/bowl.tscn" id="1_kxkot"]
 [ext_resource type="Texture2D" uid="uid://qdrfd4ch8mqm" path="res://Altars/FoodBowl/bowl_icon.png" id="2_3f355"]
-[ext_resource type="PackedScene" uid="uid://bnjd3xnekunev" path="res://Cats/cat_miner.tscn" id="3_g70my"]
+[ext_resource type="PackedScene" uid="uid://bnjd3xnekunev" path="res://Entities/Cats/cat_miner.tscn" id="3_g70my"]
 
 [resource]
 script = ExtResource("1_83e51")

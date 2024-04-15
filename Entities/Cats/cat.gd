@@ -1,9 +1,6 @@
 class_name Cat
-extends AnimatableBody2D
+extends Entity
 
-
-@export var speed := 100
-@export_range(0.0, 10.0, 0.01) var speed_multiplier := 1.0
 
 var just_exited_area := false:
 	set(new_value):

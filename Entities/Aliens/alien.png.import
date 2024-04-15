@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsvtodi8n6lt0"
-path="res://.godot/imported/laser.png-0b45510a6d4ad847af7dc2f19c8bd1a9.ctex"
+uid="uid://1i3vpi7ti8yc"
+path="res://.godot/imported/alien.png-6fa64a1ba74635244e85c1175b36fc6f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Cats/laser.png"
-dest_files=["res://.godot/imported/laser.png-0b45510a6d4ad847af7dc2f19c8bd1a9.ctex"]
+source_file="res://Entities/Aliens/alien.png"
+dest_files=["res://.godot/imported/alien.png-6fa64a1ba74635244e85c1175b36fc6f.ctex"]
 
 [params]
 

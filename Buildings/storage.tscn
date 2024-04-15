@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://b6lwml3cddh7x"]
+[gd_scene load_steps=13 format=3 uid="uid://b6lwml3cddh7x"]
 
 [ext_resource type="Script" path="res://Buildings/storage.gd" id="1_ggwxb"]
 [ext_resource type="Texture2D" uid="uid://cwggwumpvkcvk" path="res://Buildings/storage_container.png" id="1_x56mw"]
 [ext_resource type="Texture2D" uid="uid://dnl5e5ggpig16" path="res://Buildings/storage_lid.png" id="2_h7avv"]
 [ext_resource type="PackedScene" uid="uid://cqf2t0k4fmlo2" path="res://Buildings/info_bar.tscn" id="2_waxv6"]
 [ext_resource type="PackedScene" uid="uid://ck7pp5vhb1ofp" path="res://Debug/debug_panel.tscn" id="5_p5tba"]
+[ext_resource type="PackedScene" uid="uid://65keh6u0cb7e" path="res://Buildings/take_damage_zone.tscn" id="6_muj3e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f1w4a"]
 size = Vector2(485.714, 382.857)
@@ -48,6 +49,9 @@ _data = {
 "RESET": SubResource("Animation_fe7vj"),
 "open": SubResource("Animation_sm5ob")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c7ne1"]
+size = Vector2(385.714, 268.572)
 
 [node name="Storage" type="StaticBody2D"]
 scale = Vector2(0.35, 0.35)
@@ -93,6 +97,18 @@ unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_1a5ss")
 }
+
+[node name="TakeDamageZone" parent="." instance=ExtResource("6_muj3e")]
+unique_name_in_owner = true
+scale = Vector2(1, 1)
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TakeDamageZone"]
+position = Vector2(1.42857, -2.85714)
+scale = Vector2(0.999999, 0.999999)
+shape = SubResource("RectangleShape2D_c7ne1")
+debug_color = Color(0.759643, 0.41916, 0.464153, 0.42)
 
 [connection signal="body_entered" from="Awarnesse" to="." method="_on_awarnesse_body_entered"]
 [connection signal="body_exited" from="Awarnesse" to="." method="_on_awarnesse_body_exited"]

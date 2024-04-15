@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://bnjd3xnekunev"]
 
-[ext_resource type="PackedScene" uid="uid://b0fveacr07rl2" path="res://Cats/cat.tscn" id="1_14mmn"]
-[ext_resource type="Script" path="res://Cats/cat_miner.gd" id="2_c8ny4"]
-[ext_resource type="Texture2D" uid="uid://da7tbrggx5xsi" path="res://Cats/pickax.png" id="2_i88cg"]
+[ext_resource type="PackedScene" uid="uid://b0fveacr07rl2" path="res://Entities/Cats/cat.tscn" id="1_14mmn"]
+[ext_resource type="Script" path="res://Entities/Cats/cat_miner.gd" id="2_c8ny4"]
+[ext_resource type="Texture2D" uid="uid://da7tbrggx5xsi" path="res://Entities/Cats/pickax.png" id="2_i88cg"]
 [ext_resource type="PackedScene" uid="uid://ck7pp5vhb1ofp" path="res://Debug/debug_panel.tscn" id="4_v7tq4"]
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jh4mq"]
@@ -10,6 +10,7 @@
 [node name="CatMiner" instance=ExtResource("1_14mmn")]
 collision_mask = 2
 script = ExtResource("2_c8ny4")
+speed_multiplier = 1.1
 
 [node name="Sprite2D2" type="Sprite2D" parent="." index="1"]
 position = Vector2(26, 2)
