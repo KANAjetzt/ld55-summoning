@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dpjedk5o7w8rk"]
+[gd_scene load_steps=5 format=3 uid="uid://dpjedk5o7w8rk"]
 
-[ext_resource type="Texture2D" uid="uid://qdrfd4ch8mqm" path="res://UI/bowl_icon.png" id="1_txa3q"]
-[ext_resource type="Texture2D" uid="uid://n3o6covmfveo" path="res://UI/chair_icon.png" id="2_xjelw"]
+[ext_resource type="Script" path="res://UI/shop.gd" id="1_hsi1g"]
+[ext_resource type="PackedScene" uid="uid://doq6646wmq7md" path="res://UI/shop_button_item.tscn" id="2_l0crd"]
+[ext_resource type="Resource" uid="uid://beyqet2omknxg" path="res://Altars/FoodBowl/food_bowl_data.tres" id="3_8abaw"]
+[ext_resource type="Resource" uid="uid://cyvf3qibehkcf" path="res://Altars/Chair/chair_data.tres" id="4_migqe"]
 
 [node name="Shop" type="Control"]
 layout_mode = 3
@@ -10,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_hsi1g")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -48,11 +51,13 @@ text = "Hide"
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="ShopButtonFoodBowl" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_l0crd")]
 layout_mode = 2
-icon = ExtResource("1_txa3q")
+item_data = ExtResource("3_8abaw")
 
-[node name="Button2" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-auto_translate_mode = 1
+[node name="ShopButtonItemChair" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_l0crd")]
 layout_mode = 2
-icon = ExtResource("2_xjelw")
+item_data = ExtResource("4_migqe")
+
+[connection signal="item_selected" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ShopButtonFoodBowl" to="." method="_on_shop_button_item_selected"]
+[connection signal="item_selected" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ShopButtonItemChair" to="." method="_on_shop_button_item_selected"]

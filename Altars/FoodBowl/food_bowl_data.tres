@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AltarData" load_steps=4 format=3 uid="uid://beyqet2omknxg"]
+
+[ext_resource type="Script" path="res://Altars/_definitions/altar.gd" id="1_83e51"]
+[ext_resource type="PackedScene" uid="uid://bao6inxmg7xx7" path="res://Altars/FoodBowl/bowl_appearance.tscn" id="1_kxkot"]
+[ext_resource type="Texture2D" uid="uid://qdrfd4ch8mqm" path="res://Altars/FoodBowl/bowl_icon.png" id="2_3f355"]
+
+[resource]
+script = ExtResource("1_83e51")
+id = "altar_food_bowl"
+title = "Food Bowl"
+icon = ExtResource("2_3f355")
+appearance = ExtResource("1_kxkot")
+cost = 3

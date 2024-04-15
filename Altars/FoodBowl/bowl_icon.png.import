@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://qdrfd4ch8mqm"
-path="res://.godot/imported/bowl_icon.png-740bdd43d6cef1f4e9efb09fa0faa2a8.ctex"
+path="res://.godot/imported/bowl_icon.png-d550b78ef483560b758a8159bc710d1f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI/bowl_icon.png"
-dest_files=["res://.godot/imported/bowl_icon.png-740bdd43d6cef1f4e9efb09fa0faa2a8.ctex"]
+source_file="res://Altars/FoodBowl/bowl_icon.png"
+dest_files=["res://.godot/imported/bowl_icon.png-d550b78ef483560b758a8159bc710d1f.ctex"]
 
 [params]
 

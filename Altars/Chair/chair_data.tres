@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AltarData" load_steps=4 format=3 uid="uid://cyvf3qibehkcf"]
+
+[ext_resource type="PackedScene" uid="uid://pbfehijocx5u" path="res://Altars/Chair/chair_appearance.tscn" id="1_h2v51"]
+[ext_resource type="Script" path="res://Altars/_definitions/altar.gd" id="2_mgeja"]
+[ext_resource type="Texture2D" uid="uid://n3o6covmfveo" path="res://Altars/Chair/chair_icon.png" id="2_reaxa"]
+
+[resource]
+script = ExtResource("2_mgeja")
+id = "altar_chair"
+title = "Chair"
+icon = ExtResource("2_reaxa")
+appearance = ExtResource("1_h2v51")
+cost = 10

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b0qt8n6gbxlat"]
+[gd_scene load_steps=16 format=3 uid="uid://b0qt8n6gbxlat"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_nu5bv"]
 [ext_resource type="PackedScene" uid="uid://bnjd3xnekunev" path="res://Cats/cat_miner.tscn" id="2_ma2mg"]
@@ -9,6 +9,8 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="7_ive38"]
 [ext_resource type="Script" path="res://camera_target.gd" id="7_y0ugt"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2D.gd" id="8_gjqs2"]
+[ext_resource type="PackedScene" uid="uid://pbfehijocx5u" path="res://Altars/Chair/chair_appearance.tscn" id="10_fjou2"]
+[ext_resource type="Script" path="res://altar_preview.gd" id="11_dympo"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gxcq8"]
 
@@ -22,13 +24,14 @@ gradient = SubResource("Gradient_suikg")
 [sub_resource type="Environment" id="Environment_ebfxl"]
 background_mode = 1
 
-[node name="Main" type="Node"]
+[node name="Main" type="Node2D"]
 script = ExtResource("1_nu5bv")
 
 [node name="Storage" parent="." instance=ExtResource("2_pq0lw")]
 position = Vector2(585, 342)
 
 [node name="Mines" type="Node" parent="."]
+unique_name_in_owner = true
 
 [node name="Mine" parent="Mines" instance=ExtResource("3_uhm5x")]
 position = Vector2(4408, -635)
@@ -46,7 +49,7 @@ position = Vector2(-534, 1970)
 position = Vector2(2543, 577)
 
 [node name="Mine6" parent="Mines" instance=ExtResource("3_uhm5x")]
-position = Vector2(18, -143)
+position = Vector2(64, -36)
 
 [node name="Mine7" parent="Mines" instance=ExtResource("3_uhm5x")]
 position = Vector2(-549, -707)
@@ -58,6 +61,7 @@ position = Vector2(1435, -418)
 position = Vector2(-757, 307)
 
 [node name="Cats" type="Node" parent="."]
+unique_name_in_owner = true
 
 [node name="CatMiner" parent="Cats" instance=ExtResource("2_ma2mg")]
 position = Vector2(63, 425)
@@ -76,6 +80,9 @@ position = Vector2(198, 437)
 
 [node name="CatMiner3" parent="Cats" instance=ExtResource("2_ma2mg")]
 position = Vector2(205, 363)
+
+[node name="Altars" type="Node" parent="."]
+unique_name_in_owner = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(565, 317)
@@ -110,6 +117,10 @@ inactive_update_mode = 0
 [node name="CameraTarget" type="Node2D" parent="."]
 position = Vector2(565, 317)
 script = ExtResource("7_y0ugt")
+
+[node name="AltarPreview" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("11_dympo")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -148,3 +159,8 @@ metadata/_edit_lock_ = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ebfxl")
+
+[node name="ChairAppearance" parent="." instance=ExtResource("10_fjou2")]
+position = Vector2(173, 242)
+
+[connection signal="altar_bought" from="CanvasLayer/Shop" to="." method="_on_shop_altar_bought"]

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bao6inxmg7xx7"]
+
+[ext_resource type="Texture2D" uid="uid://dpwkl23r5tncr" path="res://Altars/FoodBowl/bowl.png" id="1_edwc8"]
+[ext_resource type="Script" path="res://Altars/_definitions/appearances.gd" id="1_k3cgu"]
+
+[node name="BowlAppearance" type="Node2D"]
+script = ExtResource("1_k3cgu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("1_edwc8")

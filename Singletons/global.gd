@@ -4,12 +4,14 @@ extends Node
 signal dry_food_count_changed(dry_food_count: int)
 signal  aliens_attacking_count_changed(aliens_attacking_count: int)
 
-@export var dry_food_count := 0
+@export var dry_food_count: int = 0 if not Debug.override_dry_food_count else Debug.override_dry_food_count_amount
 
 var aliens_attacking_count := 0
 var storage: BuildingStorage
 var mines: Array[BuildingMine]
 var mines_by_distance_to_storage: Array[BuildingMine]
+var altar_selected: AltarData = null
+
 
 func add_dry_food(amount: int) -> void:
 	dry_food_count = dry_food_count + amount
