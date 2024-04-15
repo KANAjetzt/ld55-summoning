@@ -1,3 +1,4 @@
+class_name Main
 extends Node2D
 
 
@@ -5,10 +6,11 @@ extends Node2D
 @onready var altar_preview: AltarPreview = %AltarPreview
 @onready var altars: Node = %Altars
 @onready var cats: Node = %Cats
+@onready var projectiles: Node2D = %Projectiles
 
 
-func _on_shop_altar_bought(item_data: AltarData) -> void:
-	altar_preview.texture = item_data.icon
+func _ready() -> void:
+	Global.main = self
 
 
 func _process(delta: float) -> void:
@@ -17,6 +19,10 @@ func _process(delta: float) -> void:
 
 	if Global.cat_warrior_selected and Input.is_action_just_pressed("select") and not Global.mouse_over_cat_warrior:
 		handle_warrior_placemend()
+
+
+func _on_shop_altar_bought(item_data: AltarData) -> void:
+	altar_preview.texture = item_data.icon
 
 
 func handle_altar_placemend() -> void:

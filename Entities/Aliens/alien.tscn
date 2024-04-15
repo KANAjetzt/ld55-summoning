@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bs4jl7gkqp7nx"]
+[gd_scene load_steps=10 format=3 uid="uid://bs4jl7gkqp7nx"]
 
 [ext_resource type="Script" path="res://Entities/Aliens/alien.gd" id="1_ccsbg"]
 [ext_resource type="Texture2D" uid="uid://1i3vpi7ti8yc" path="res://Entities/Aliens/alien.png" id="1_pb080"]
+[ext_resource type="PackedScene" uid="uid://b6v8cu17norbt" path="res://Entities/entity_visiblity.tscn" id="3_ky3cv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_154dv"]
 radius = 14.0
@@ -48,11 +49,14 @@ _data = {
 "spawn": SubResource("Animation_xlmhs")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_10xda"]
+radius = 37.054
+
 [node name="Alien" type="AnimatableBody2D"]
 collision_layer = 4
 collision_mask = 6
 script = ExtResource("1_ccsbg")
-speed_multiplier = 5.0
+speed_multiplier = 2.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.662745, 0.376471, 0.333333, 1)
@@ -78,5 +82,14 @@ libraries = {
 "": SubResource("AnimationLibrary_478nb")
 }
 autoplay = "spawn"
+
+[node name="EntityVisiblityZone" parent="." instance=ExtResource("3_ky3cv")]
+unique_name_in_owner = true
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EntityVisiblityZone"]
+shape = SubResource("CircleShape2D_10xda")
+debug_color = Color(0.535573, 0.568769, 0.0384447, 0.42)
 
 [connection signal="area_entered" from="ColliderBuildings" to="." method="_on_collider_buildings_area_entered"]

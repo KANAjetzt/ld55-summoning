@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ProjectileData" load_steps=3 format=3 uid="uid://cf8r0n3tfgby5"]
+
+[ext_resource type="PackedScene" uid="uid://cd6mivsge63mm" path="res://Projectiles/Laser/projectile_laser.tscn" id="1_kfqmx"]
+[ext_resource type="Script" path="res://Projectiles/_definitions/projectile_data.gd" id="1_pfges"]
+
+[resource]
+script = ExtResource("1_pfges")
+speed = 500
+scene = ExtResource("1_kfqmx")

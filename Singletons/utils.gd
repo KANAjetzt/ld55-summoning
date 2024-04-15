@@ -36,3 +36,11 @@ func get_closest_mine_from_storage_with_space() -> BuildingMine:
 		break
 
 	return closest_mine
+
+
+func spawn_projectile(projectile_data: ProjectileData, start_position: Vector2, target_position: Vector2) -> void:
+	var new_projectile: ProjectileLaser = projectile_data.scene.instantiate()
+	new_projectile.global_position = start_position
+	new_projectile.data = projectile_data
+	new_projectile.target_position = target_position
+	Global.main.projectiles.add_child(new_projectile)

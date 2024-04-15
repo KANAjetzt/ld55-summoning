@@ -6,6 +6,7 @@ signal aliens_attacking_count_changed(aliens_attacking_count: int)
 
 @export var dry_food_count: int = 0 if not Debug.override_dry_food_count else Debug.override_dry_food_count_amount
 
+var main: Main
 var aliens_attacking_count := 0
 var storage: BuildingStorage
 var mines: Array[BuildingMine]
