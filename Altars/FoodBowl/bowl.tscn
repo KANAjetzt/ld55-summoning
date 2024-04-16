@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://75f6lvivf5wu"]
+[gd_scene load_steps=5 format=3 uid="uid://75f6lvivf5wu"]
 
 [ext_resource type="PackedScene" uid="uid://kfrjjt5p4eiw" path="res://Altars/_definitions/altar.tscn" id="1_a41et"]
 [ext_resource type="Script" path="res://Altars/FoodBowl/bowl.gd" id="2_hw112"]
+[ext_resource type="Script" path="res://SFX/player.gd" id="3_4m1rk"]
+[ext_resource type="AudioStream" uid="uid://dmeax3wv6208w" path="res://SFX/sit_0.ogg" id="4_m3t8i"]
 
 [node name="AltarBowl" instance=ExtResource("1_a41et")]
 script = ExtResource("2_hw112")
@@ -11,5 +13,10 @@ scale = Vector2(0.2, 0.2)
 
 [node name="TimerSpawnCat" parent="." index="1"]
 wait_time = 3.0
+
+[node name="SFXPlayer" type="AudioStreamPlayer" parent="." index="4"]
+unique_name_in_owner = true
+script = ExtResource("3_4m1rk")
+sounds = Array[AudioStream]([ExtResource("4_m3t8i")])
 
 [connection signal="timeout" from="TimerSpawnCat" to="." method="_on_timer_spawn_cat_timeout"]

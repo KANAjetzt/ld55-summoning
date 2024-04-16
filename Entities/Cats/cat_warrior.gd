@@ -30,6 +30,7 @@ var enemies_in_range: Array[Alien] = []
 @onready var debug_panel: UIDebugPanel = %DebugPanel
 @onready var timer_laser: Timer = %TimerLaser
 @onready var animation_player_2: AnimationPlayer = %AnimationPlayer2
+@onready var audio_stream_player: AudioStreamPlayer = %AudioStreamPlayer
 
 
 func _ready() -> void:
@@ -69,6 +70,8 @@ func set_target_position(new_target_position: Vector2) -> void:
 func move_towards_target_position(delta: float) -> void:
 	var direction := global_position.direction_to(target_position)
 	global_position = global_position + direction * speed * speed_multiplier * delta
+
+
 
 	if global_position.distance_squared_to(target_position) < 100:
 		is_moving = false

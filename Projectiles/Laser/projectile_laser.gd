@@ -9,6 +9,12 @@ signal alien_hited(alien: Alien)
 
 var target_position: Vector2
 
+@onready var sfx_impact: SFXPlayer = %SFXImpact
+@onready var sfx_laser: SFXPlayer = $SFXLaser
+
+
+func _ready() -> void:
+	sfx_laser.start()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

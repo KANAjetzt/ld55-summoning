@@ -93,6 +93,9 @@ unique_name_in_owner = true
 wait_time = 0.75
 one_shot = true
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="10"]
+unique_name_in_owner = true
+
 [connection signal="mouse_entered" from="ClickListener" to="." method="_on_click_listener_mouse_entered"]
 [connection signal="mouse_exited" from="ClickListener" to="." method="_on_click_listener_mouse_exited"]
 [connection signal="area_entered" from="Awarnesse" to="." method="_on_awarnesse_area_entered"]

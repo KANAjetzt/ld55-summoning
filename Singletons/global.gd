@@ -18,6 +18,8 @@ var cat_warrior_selected: CatWarrior = null: set = _set_cat_warrior_selected
 var alien_spawn_points: Array[Node2D] = []
 var cat_warrior_count: int = 0
 
+@onready var sfx_player: SFXPlayer = %SFXPlayer
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("debug_0"):
@@ -65,6 +67,13 @@ func get_all_mines() -> Array[BuildingMine]:
 
 func sort_mines_by_distance_to_center(a: BuildingMine, b: BuildingMine) -> bool:
 	return a.global_position.distance_squared_to(storage.global_position) < b.global_position.distance_squared_to(storage.global_position)
+
+
+func play_sfx(sound: AudioStream) -> void:
+	if not sfx_player.playing:
+		sfx_player.sounds.clear()
+		sfx_player.sounds.push_back(sound)
+		sfx_player.start()
 
 
 func _update_mines_by_distance_to_center():

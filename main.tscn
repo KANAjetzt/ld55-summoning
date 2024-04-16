@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b0qt8n6gbxlat"]
+[gd_scene load_steps=19 format=3 uid="uid://b0qt8n6gbxlat"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_nu5bv"]
 [ext_resource type="PackedScene" uid="uid://bnjd3xnekunev" path="res://Entities/Cats/cat_miner.tscn" id="2_ma2mg"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://altar_preview.gd" id="11_dympo"]
 [ext_resource type="PackedScene" uid="uid://dvkmdffpxno1h" path="res://Entities/Aliens/alien_clustor.tscn" id="12_w2cdb"]
 [ext_resource type="PackedScene" uid="uid://k4dw8byq2a8i" path="res://UI/game_over.tscn" id="13_766qe"]
+[ext_resource type="AudioStream" uid="uid://bmy1wdk833tgf" path="res://music/ld55-music.ogg" id="14_fmisd"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gxcq8"]
 
@@ -230,6 +231,12 @@ environment = SubResource("Environment_ebfxl")
 
 [node name="TimerSpawnAlien" type="Timer" parent="."]
 unique_name_in_owner = true
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("14_fmisd")
+volume_db = -21.166
+autoplay = true
 
 [connection signal="altar_bought" from="CanvasLayer/Shop" to="." method="_on_shop_altar_bought"]
 [connection signal="timeout" from="TimerSpawnAlien" to="." method="_on_timer_spawn_alien_timeout"]

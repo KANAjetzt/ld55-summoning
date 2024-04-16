@@ -33,6 +33,8 @@ var is_storing := false:
 @onready var timer_mining: Timer = %TimerMining
 @onready var timer_storing: Timer = %TimerStoring
 @onready var debug_panel: UIDebugPanel = %DebugPanel
+@onready var audio_stoped_mining: SFXPlayer = %AudioStopedMining
+@onready var audio_stoped_storing: SFXPlayer = %AudioStopedStoring
 
 
 # Called when the node enters the scene tree for the first time.
@@ -91,6 +93,7 @@ func start_mining() -> void:
 
 
 func stop_mining() -> void:
+	audio_stoped_mining.start()
 	var tween := create_tween()
 	tween.tween_property(self, "global_position", global_position + Vector2(0, 50), 0.5)
 	tween.parallel().tween_property(self, "modulate:a", 1.0, 0.5)
@@ -115,7 +118,7 @@ func store_food() -> void:
 
 func stop_storing() -> void:
 	is_storing = false
-
+	audio_stoped_storing.start()
 	var tween := create_tween()
 	tween.tween_property(self, "global_position", global_position - (135.0 * global_position.direction_to(Global.storage.global_position)), 1.0)
 	await tween.finished

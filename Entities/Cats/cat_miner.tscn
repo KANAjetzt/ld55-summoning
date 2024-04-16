@@ -1,9 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://bnjd3xnekunev"]
+[gd_scene load_steps=9 format=3 uid="uid://bnjd3xnekunev"]
 
 [ext_resource type="PackedScene" uid="uid://b0fveacr07rl2" path="res://Entities/Cats/cat.tscn" id="1_14mmn"]
 [ext_resource type="Script" path="res://Entities/Cats/cat_miner.gd" id="2_c8ny4"]
 [ext_resource type="Texture2D" uid="uid://da7tbrggx5xsi" path="res://Entities/Cats/pickax.png" id="2_i88cg"]
 [ext_resource type="PackedScene" uid="uid://ck7pp5vhb1ofp" path="res://Debug/debug_panel.tscn" id="4_v7tq4"]
+[ext_resource type="PackedScene" uid="uid://b7vgx55o8td0d" path="res://SFX/player.tscn" id="5_2ps25"]
+[ext_resource type="AudioStream" uid="uid://ba0bbfbdq8l54" path="res://SFX/mined.ogg" id="5_imyi3"]
+[ext_resource type="AudioStream" uid="uid://d4drmvnps37xq" path="res://SFX/mined_1.ogg" id="6_rd5he"]
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jh4mq"]
 
@@ -39,6 +42,14 @@ offset_top = -69.0
 offset_right = 20.0
 offset_bottom = -29.0
 scale = Vector2(1, 1)
+
+[node name="AudioStopedStoring" parent="." index="7" instance=ExtResource("5_2ps25")]
+unique_name_in_owner = true
+sounds = Array[AudioStream]([ExtResource("6_rd5he")])
+
+[node name="AudioStopedMining" parent="." index="8" instance=ExtResource("5_2ps25")]
+unique_name_in_owner = true
+sounds = Array[AudioStream]([ExtResource("5_imyi3")])
 
 [connection signal="timeout" from="TimerMining" to="." method="_on_timer_mining_timeout"]
 [connection signal="timeout" from="TimerStoring" to="." method="_on_timer_storing_timeout"]
