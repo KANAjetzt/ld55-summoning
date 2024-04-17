@@ -39,8 +39,9 @@ func despawn(by_building := false) -> void:
 
 
 func attack() -> void:
-	animation_player.play("spawn")
-	current_target = Utils.get_closest_building(global_position)
+	if not current_target:
+		animation_player.play("spawn")
+		current_target = Utils.get_closest_building(global_position)
 
 
 func take_damage(amount: int) -> void:

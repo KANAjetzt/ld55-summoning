@@ -88,6 +88,7 @@ func set_target_enemy(alien: Alien) -> void:
 
 func fire_laser() -> void:
 	Utils.spawn_projectile(projectile, global_position, predict_enemy_position())
+	target_enemy.attack()
 	timer_laser.start()
 
 
