@@ -4,7 +4,4 @@
 
 [node name="Debug" type="Node"]
 script = ExtResource("1_8ds80")
-override_mining_time = true
 override_mining_time_amount = 3.0
-override_dry_food_count = true
-allways_show_miners = true

@@ -27,7 +27,7 @@ func _process(delta: float) -> void:
 	if Global.cat_warrior_selected and Input.is_action_just_pressed("select") and not Global.mouse_over_cat_warrior:
 		handle_warrior_placemend()
 
-	if not Global.mouse_over_cat_warrior and Input.is_action_just_pressed("deselect"):
+	if Global.cat_warrior_selected and not Global.mouse_over_cat_warrior and Input.is_action_just_pressed("deselect"):
 		Global.cat_warrior_selected.deselect()
 		Global.cat_warrior_selected = null
 
