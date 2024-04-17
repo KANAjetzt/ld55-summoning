@@ -42,10 +42,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		handle_warrior_placemend()
 
 
-func _on_shop_altar_bought(item_data: AltarData) -> void:
-	altar_preview.texture = item_data.icon
-
-
 func handle_altar_placemend() -> void:
 	var new_altar: Altar = Global.altar_selected.scene.instantiate()
 	new_altar.data = Global.altar_selected
@@ -59,26 +55,26 @@ func handle_altar_placemend() -> void:
 func handle_warrior_placemend() -> void:
 	var selected_warrior: CatWarrior = Global.cat_warrior_selected
 	selected_warrior.set_target_position(get_global_mouse_position())
-	Global.cat_warrior_count = Global.cat_warrior_count + 1
 
-	if Utils.is_int_in_range(Global.cat_warrior_count, 0, 2):
-		return
-	if Utils.is_int_in_range(Global.cat_warrior_count, 3, 5):
-		timer_spawn_alien.wait_time = 20
-		if timer_spawn_alien.is_stopped():
-			timer_spawn_alien.start()
-	if Utils.is_int_in_range(Global.cat_warrior_count, 6, 8):
-		timer_spawn_alien.wait_time = 15
-	if Utils.is_int_in_range(Global.cat_warrior_count, 9, 12):
-		timer_spawn_alien.wait_time = 10
-	if Global.cat_warrior_count > 12:
-		timer_spawn_alien.wait_time = 3
+
+func _on_shop_altar_bought(item_data: AltarData) -> void:
+	altar_preview.texture = item_data.icon
 
 
 func _on_altar_cat_ready(altar: Altar) -> void:
 	var new_cat: Cat = altar.data.scene_cat.instantiate()
 	new_cat.global_position = altar.global_position
 	cats.add_child(new_cat)
+
+	if new_cat is CatWarrior:
+		Global.cat_warrior_count = Global.cat_warrior_count + 1
+
+		if Utils.is_int_in_range(Global.cat_warrior_count, 2, 5):
+			Utils.update_timer(timer_spawn_alien, 2)
+		if Utils.is_int_in_range(Global.cat_warrior_count, 6, 8):
+			Utils.update_timer(timer_spawn_alien, 0.5)
+		if Global.cat_warrior_count > 12:
+			Utils.update_timer(timer_spawn_alien, 0.1)
 
 
 func _on_timer_spawn_alien_timeout() -> void:

@@ -53,3 +53,9 @@ func show_game_over() -> void:
 
 func is_int_in_range(value: int, min_value: int, max_value: int) -> bool:
 	return value >= min_value and value <= max_value
+
+
+func update_timer(timer: Timer, _new_time: float) -> void:
+	timer.stop()
+	timer.wait_time = _new_time
+	timer.start()

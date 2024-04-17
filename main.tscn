@@ -32,6 +32,7 @@ script = ExtResource("1_nu5bv")
 
 [node name="Storage" parent="." instance=ExtResource("2_pq0lw")]
 position = Vector2(585, 342)
+health_max = 5
 
 [node name="Mines" type="Node" parent="."]
 unique_name_in_owner = true
@@ -234,6 +235,8 @@ environment = SubResource("Environment_ebfxl")
 
 [node name="TimerSpawnAlien" type="Timer" parent="."]
 unique_name_in_owner = true
+wait_time = 60.0
+autostart = true
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
