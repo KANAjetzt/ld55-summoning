@@ -21,15 +21,6 @@ var cat_warrior_count: int = 0
 @onready var sfx_player: SFXPlayer = %SFXPlayer
 
 
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("debug_0"):
-		for node in get_tree().get_nodes_in_group("debug_panel"):
-			if node.visible:
-				node.hide()
-			else:
-				node.show()
-
-
 func _set_cat_warrior_selected(_new_cat_warrior_selected):
 	if cat_warrior_selected and not _new_cat_warrior_selected == cat_warrior_selected:
 		cat_warrior_selected.deselect()

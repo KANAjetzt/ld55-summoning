@@ -37,7 +37,6 @@ func take_damage(amount := 1) -> void:
 		animation_player.play("despawn")
 
 
-
 func target() -> void:
 	capacity_target = capacity_target + 1
 
@@ -47,7 +46,6 @@ func enter() -> bool:
 		return false
 
 	capacity_current = capacity_current + 1
-
 	info_bar.set_capacity(capacity_current, capacity_max)
 
 	entered.emit(capacity_current)
@@ -76,6 +74,7 @@ func _on_awarnesse_body_entered(body: Node2D) -> void:
 
 		miner.is_at_mine = true
 		miner.mine_current = self
+		miner.mine_target = self
 		miner.move_to_mine_entrance(entrance_shape.global_position)
 		miner.timer_mining.wait_time = mining_time
 

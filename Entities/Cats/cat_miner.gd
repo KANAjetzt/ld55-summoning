@@ -35,6 +35,7 @@ var is_storing := false:
 @onready var debug_panel: UIDebugPanel = %DebugPanel
 @onready var audio_stoped_mining: SFXPlayer = %AudioStopedMining
 @onready var audio_stoped_storing: SFXPlayer = %AudioStopedStoring
+@onready var timer_search_mine: Timer = %TimerSearchMine
 
 
 # Called when the node enters the scene tree for the first time.
@@ -60,10 +61,16 @@ func _physics_process(delta: float) -> void:
 		move_towards_storage(delta)
 
 
-func search_mine() -> void:
+func search_mine() -> bool:
 	mine_target = Utils.get_closest_mine_from_storage_with_space()
+	if not mine_target:
+		timer_search_mine.start()
+		return false
+
 	mine_target.target()
 	mine_target.despawning.connect(_on_mine_target_despawning)
+
+	return true
 
 
 func move_towards_mine(delta: float) -> void:
@@ -86,7 +93,8 @@ func move_towards_storage(delta: float) -> void:
 func start_mining() -> void:
 	var tween := create_tween()
 	tween.tween_property(self, "global_position", global_position + Vector2(0, -50), 0.5)
-	tween.parallel().tween_property(self, "modulate:a", 0.0, 0.5)
+	if not Debug.allways_show_miners:
+		tween.parallel().tween_property(self, "modulate:a", 0.0, 0.5)
 	await tween.finished
 	timer_mining.start()
 	is_mining = true
@@ -138,3 +146,9 @@ func _on_timer_storing_timeout() -> void:
 
 func _on_mine_target_despawning(mine: BuildingMine) -> void:
 	search_mine()
+
+
+func _on_timer_search_mine_timeout() -> void:
+	var success := search_mine()
+	if success:
+		timer_search_mine.stop()

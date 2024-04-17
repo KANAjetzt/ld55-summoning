@@ -90,9 +90,9 @@ shape = SubResource("CircleShape2D_r4olf")
 unique_name_in_owner = true
 collision_layer = 2
 collision_mask = 4
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TakeDamageZone"]
-position = Vector2(28.5714, 2.85714)
 shape = SubResource("CircleShape2D_bbodx")
 debug_color = Color(0.73757, 0.443148, 0.416458, 0.42)
 

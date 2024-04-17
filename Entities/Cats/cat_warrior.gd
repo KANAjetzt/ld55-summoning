@@ -160,6 +160,8 @@ func _on_awarnesse_area_exited(area: Area2D) -> void:
 		if entity_visiblity_zone.entity is Alien:
 			alien = entity_visiblity_zone.entity
 			if is_instance_valid(alien):
+				if alien.despawning.is_connected(_on_target_enemy_despawning):
+					alien.despawning.disconnect(_on_target_enemy_despawning)
 				if alien == target_enemy:
 					target_enemy = null
 
@@ -178,6 +180,3 @@ func _on_target_enemy_despawning(alien: Alien) -> void:
 	debug_panel.update_label(3, "enemies_in_range: %s" % enemies_in_range)
 	if not enemies_in_range.is_empty():
 		target_enemy = enemies_in_range[0]
-
-
-

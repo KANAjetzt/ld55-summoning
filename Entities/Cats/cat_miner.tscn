@@ -51,5 +51,9 @@ sounds = Array[AudioStream]([ExtResource("6_rd5he")])
 unique_name_in_owner = true
 sounds = Array[AudioStream]([ExtResource("5_imyi3")])
 
+[node name="TimerSearchMine" type="Timer" parent="." index="9"]
+unique_name_in_owner = true
+
 [connection signal="timeout" from="TimerMining" to="." method="_on_timer_mining_timeout"]
 [connection signal="timeout" from="TimerStoring" to="." method="_on_timer_storing_timeout"]
+[connection signal="timeout" from="TimerSearchMine" to="." method="_on_timer_search_mine_timeout"]
