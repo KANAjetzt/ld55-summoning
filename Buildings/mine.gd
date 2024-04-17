@@ -10,13 +10,18 @@ signal despawning(mine: BuildingMine)
 @export var mining_time: float = 10 if not Debug.override_mining_time else Debug.override_mining_time_amount
 
 var capacity_current := 0
-var capacity_target := 0
+var capacity_target := 0:
+	set(_new_capacity_target):
+		capacity_target = _new_capacity_target
+		if debug_panel:
+			debug_panel.update_label(0, "capacity_target: %s" % _new_capacity_target)
 
 @onready var info_bar: UIInfoBar = %InfoBar
 @onready var entrance: Area2D = %Entrance
 @onready var entrance_shape: CollisionShape2D = %EntranceShape
 @onready var take_damage_zone: BuildingTakeDamageZone = %TakeDamageZone
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var debug_panel: UIDebugPanel = %DebugPanel
 
 
 func _ready() -> void:
@@ -46,6 +51,9 @@ func enter() -> bool:
 		return false
 
 	capacity_current = capacity_current + 1
+	if capacity_target < capacity_current:
+		capacity_target = capacity_current
+
 	info_bar.set_capacity(capacity_current, capacity_max)
 
 	entered.emit(capacity_current)

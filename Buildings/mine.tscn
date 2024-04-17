@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://b4a73ga7o86ma"]
+[gd_scene load_steps=12 format=3 uid="uid://b4a73ga7o86ma"]
 
 [ext_resource type="Script" path="res://Buildings/mine.gd" id="1_5omvh"]
 [ext_resource type="Texture2D" uid="uid://cccnvf3nho74w" path="res://Buildings/mine_v2.png" id="2_ok27o"]
 [ext_resource type="PackedScene" uid="uid://cqf2t0k4fmlo2" path="res://Buildings/info_bar.tscn" id="3_oo2kx"]
 [ext_resource type="PackedScene" uid="uid://65keh6u0cb7e" path="res://Buildings/take_damage_zone.tscn" id="4_dflbt"]
+[ext_resource type="PackedScene" uid="uid://ck7pp5vhb1ofp" path="res://Debug/debug_panel.tscn" id="4_voxhd"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_447gq"]
 radius = 80.0
@@ -88,6 +89,7 @@ shape = SubResource("CircleShape2D_r4olf")
 
 [node name="TakeDamageZone" parent="." instance=ExtResource("4_dflbt")]
 unique_name_in_owner = true
+scale = Vector2(1, 1)
 collision_layer = 2
 collision_mask = 4
 metadata/_edit_group_ = true
@@ -95,6 +97,13 @@ metadata/_edit_group_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TakeDamageZone"]
 shape = SubResource("CircleShape2D_bbodx")
 debug_color = Color(0.73757, 0.443148, 0.416458, 0.42)
+
+[node name="DebugPanel" parent="." instance=ExtResource("4_voxhd")]
+unique_name_in_owner = true
+offset_left = 400.0
+offset_top = -474.286
+offset_right = 640.0
+offset_bottom = -368.286
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

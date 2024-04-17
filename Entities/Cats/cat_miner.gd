@@ -9,6 +9,11 @@ var food_carrying := 0:
 		food_carrying = new_val
 		if debug_panel:
 			debug_panel.update_label(4, "food: %s" % food_carrying)
+var is_searching_for_mine := false:
+	set(new_val):
+		is_searching_for_mine = new_val
+		if debug_panel:
+			debug_panel.update_label(5, "is_searching_for_mine: %s" % new_val)
 var is_at_mine := false:
 	set(new_val):
 		is_at_mine = new_val
@@ -41,11 +46,6 @@ var is_storing := false:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	search_mine()
-	debug_panel.add_label("")
-	debug_panel.add_label("")
-	debug_panel.add_label("")
-	debug_panel.add_label("")
-	debug_panel.add_label("")
 
 
 func _physics_process(delta: float) -> void:
@@ -150,5 +150,7 @@ func _on_mine_target_despawning(mine: BuildingMine) -> void:
 
 func _on_timer_search_mine_timeout() -> void:
 	var success := search_mine()
+	is_searching_for_mine = true
 	if success:
 		timer_search_mine.stop()
+		is_searching_for_mine = false

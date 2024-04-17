@@ -63,6 +63,9 @@ position = Vector2(1435, -418)
 [node name="Mine9" parent="Mines" instance=ExtResource("3_uhm5x")]
 position = Vector2(-757, 307)
 
+[node name="Mine10" parent="Mines" instance=ExtResource("3_uhm5x")]
+position = Vector2(601, 1445)
+
 [node name="Cats" type="Node" parent="."]
 unique_name_in_owner = true
 
