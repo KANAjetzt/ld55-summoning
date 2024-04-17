@@ -35,6 +35,7 @@ size_flags_horizontal = 3
 text = "Altars"
 
 [node name="Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+visible = false
 layout_mode = 2
 text = "Hide"
 
@@ -44,10 +45,12 @@ size_flags_vertical = 3
 
 [node name="ShopButtonFoodBowl" parent="MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_l0crd")]
 layout_mode = 2
+mouse_filter = 0
 item_data = ExtResource("3_8abaw")
 
 [node name="ShopButtonItemChair" parent="MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_l0crd")]
 layout_mode = 2
+mouse_filter = 0
 item_data = ExtResource("4_migqe")
 
 [connection signal="item_selected" from="MarginContainer/VBoxContainer/HBoxContainer/ShopButtonFoodBowl" to="." method="_on_shop_button_item_selected"]

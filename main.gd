@@ -24,9 +24,6 @@ func _process(delta: float) -> void:
 	if Global.altar_selected and Input.is_action_just_pressed("select"):
 		handle_altar_placemend()
 
-	if Global.cat_warrior_selected and Input.is_action_just_pressed("select") and not Global.mouse_over_cat_warrior:
-		handle_warrior_placemend()
-
 	if Global.cat_warrior_selected and not Global.mouse_over_cat_warrior and Input.is_action_just_pressed("deselect"):
 		Global.cat_warrior_selected.deselect()
 		Global.cat_warrior_selected = null
@@ -38,6 +35,11 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("zoom_out"):
 		if not camera_main.get_zoom() * 0.9 < Vector2(0.1, 0.1):
 			camera_main.set_zoom(camera_main.get_zoom() * 0.9)
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if Global.cat_warrior_selected and event.is_action_pressed("select") and not Global.mouse_over_cat_warrior and not Global.altar_selected:
+		handle_warrior_placemend()
 
 
 func _on_shop_altar_bought(item_data: AltarData) -> void:
