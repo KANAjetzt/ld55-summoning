@@ -29,7 +29,6 @@ var enemies_in_range: Array[Alien] = []
 @onready var highlighted: TextureRect = $Highlighted
 @onready var debug_panel: UIDebugPanel = %DebugPanel
 @onready var timer_laser: Timer = %TimerLaser
-@onready var animation_player_2: AnimationPlayer = %AnimationPlayer2
 @onready var audio_stream_player: AudioStreamPlayer = %AudioStreamPlayer
 
 
@@ -80,6 +79,11 @@ func move_towards_target_position(delta: float) -> void:
 func deselect() -> void:
 	is_selected = false
 	hide_highlight()
+
+
+func set_target_enemy(alien: Alien) -> void:
+	target_enemy = alien
+	target_enemy.despawning.connect(_on_target_enemy_despawning)
 
 
 func fire_laser() -> void:
@@ -146,8 +150,7 @@ func _on_awarnesse_area_entered(area: Area2D) -> void:
 				enemies_in_range.push_back(alien)
 				debug_panel.update_label(3, "enemies_in_range: %s" % enemies_in_range)
 				if not target_enemy:
-					target_enemy = alien
-					target_enemy.despawning.connect(_on_target_enemy_despawning)
+					set_target_enemy(alien)
 					fire_laser()
 
 
@@ -179,4 +182,4 @@ func _on_target_enemy_despawning(alien: Alien) -> void:
 	enemies_in_range.erase(alien)
 	debug_panel.update_label(3, "enemies_in_range: %s" % enemies_in_range)
 	if not enemies_in_range.is_empty():
-		target_enemy = enemies_in_range[0]
+		set_target_enemy(enemies_in_range[0])

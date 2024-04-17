@@ -5,4 +5,5 @@
 
 [node name="Alien" instance=ExtResource("1_m4mdf")]
 script = ExtResource("2_u73jq")
+speed = 250
 speed_multiplier = 1.0
